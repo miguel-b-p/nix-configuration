@@ -13,7 +13,7 @@
   programs.zoxide = {
     enable = true;
     enableBashIntegration = true;
-    # options = [ "--cmd cd" ];
+    options = [ "--cmd cd" ];
   };
   programs.atuin = {
     enable = true;
@@ -40,9 +40,9 @@
       # Outras configurações manuais
       export NH_FLAKE="/home/mingas/nix-configuration"
       eval "$(${pkgs.starship}/bin/starship init bash)"
-      [[ $- == *i* ]] && source -- "$(blesh-share)"/ble.sh --attach=none
-      # clear
-      [[ ! ''${BLE_VERSION-} ]] || ble-attach
+      # [[ $- == *i* ]] && source -- "$(blesh-share)"/ble.sh --attach=none
+      # # clear
+      # [[ ! ''${BLE_VERSION-} ]] || ble-attach
     '';
   };
 

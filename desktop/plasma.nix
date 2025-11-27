@@ -23,6 +23,19 @@
 
     gnome-software
   ];
+
+  environment.sessionVariables = {
+    # Força o renderizador do KWin para software (QPainter)
+    # Muitos problemas, algumas janelas nem funcionam direito
+    # KWIN_COMPOSE = "Q";
+    KWIN_COMPOSE = "O2ES";
+
+    # Força o backend do Qt Quick para software
+    # QT_QUICK_BACKEND = "software";
+
+    # Desativa aceleração OpenGL (usará llvmpipe/softpipe)
+    # LIBGL_ALWAYS_SOFTWARE = "1";
+  };
   services.libinput.enable = true;
 
 }

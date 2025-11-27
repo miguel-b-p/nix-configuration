@@ -255,12 +255,16 @@
       #Teste
       "vm.max_map_count" = 2147483642;
       "kernel.sched_cfs_bandwidth_slice_us" = 3000;
+      "kernel.sched_latency_ns" = 3000000;
+      "kernel.sched_min_granularity_ns" = 300000;
+      "kernel.sched_wakeup_granularity_ns" = 500000;
+      "kernel.sched_nr_migrate" = 128;
     };
   };
-  systemd.tmpfiles.rules = [
-    "w /sys/kernel/debug/sched/latency_ns - - - - 3000000"
-    "w /sys/kernel/debug/sched/min_granularity_ns - - - - 300000"
-    "w /sys/kernel/debug/sched/wakeup_granularity_ns - - - - 500000"
-    "w /sys/kernel/debug/sched/nr_migrate - - - - 128"
-  ];
+  # systemd.tmpfiles.rules = [
+  #   "w /sys/kernel/debug/sched/latency_ns - - - - 3000000"
+  #   "w /sys/kernel/debug/sched/min_granularity_ns - - - - 300000"
+  #   "w /sys/kernel/debug/sched/wakeup_granularity_ns - - - - 500000"
+  #   "w /sys/kernel/debug/sched/nr_migrate - - - - 128"
+  # ];
 }

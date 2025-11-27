@@ -1,6 +1,8 @@
 { config, pkgs, ... }:
 
 {
+
+  # velora.gpu = "amd";
   environment.systemPackages = with pkgs; [
     pciutils
   ];
