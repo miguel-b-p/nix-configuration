@@ -3,11 +3,15 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
     nix-flatpak.url = "github:gmodena/nix-flatpak";
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
     flox.url = "github:flox/flox/latest";
+    antigravity-nix = {
+      url = "github:jacopone/antigravity-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -18,6 +22,7 @@
       flox,
       home-manager,
       nix-flatpak,
+      antigravity-nix,
       ...
     }@inputs:
     {
@@ -29,6 +34,11 @@
             ./configuration.nix
             chaotic.nixosModules.default
             nix-flatpak.nixosModules.nix-flatpak
+            {
+              environment.systemPackages = [
+                antigravity-nix.packages.x86_64-linux.default
+              ];
+            }
           ];
         };
       };
