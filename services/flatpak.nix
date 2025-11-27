@@ -11,11 +11,12 @@
       "io.github.thetumultuousunicornofdarkness.cpu-x"
       "org.upscayl.Upscayl"
       "org.vinegarhq.Sober"
+      "com.ranfdev.DistroShelf"
     ];
     update.auto = {
       enable = true;
-      onCalendar = "daily";
     };
+    update.onActivation = true;
   };
 
   systemd.services.flatpak-repo = {
@@ -25,4 +26,18 @@
       flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
     '';
   };
+
+  security.polkit.extraConfig = ''
+    polkit.addRule(function(action, subject) {
+      if ((action.id == "org.freedesktop.Flatpak.app-install" ||
+          action.id == "org.freedesktop.Flatpak.app-uninstall" ||
+          action.id == "org.freedesktop.Flatpak.runtime-install" ||
+          action.id == "org.freedesktop.Flatpak.runtime-uninstall" ||
+          action.id == "org.freedesktop.Flatpak.modify-repo") &&
+          subject.isInGroup("wheel")) {
+        return polkit.Result.YES;
+      }
+    });
+  '';
+
 }
