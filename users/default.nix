@@ -11,7 +11,7 @@
 
   users.users.mingas = {
     isNormalUser = true;
-    description = "usuario mingas";
+    description = "mingas";
     extraGroups = [
       "networkmanager"
       "wheel"
@@ -34,8 +34,9 @@
   # Configuração do Home Manager
   home-manager = {
     extraSpecialArgs = { inherit inputs; };
-    useGlobalPkgs = true;
+    useGlobalPkgs = false;
     useUserPackages = true;
+    backupFileExtension = "backup";
     users.mingas = import ./home.nix; # Aponta para o novo arquivo
   };
 }

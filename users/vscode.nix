@@ -1,16 +1,11 @@
-{ config, pkgs, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 
 {
-  # 1. Instalação das fontes (fica FORA do programs.vscode)
-  home.packages = with pkgs; [
-    nerd-fonts.jetbrains-mono
-    nerd-fonts.symbols-only
-    dejavu_fonts
-  ];
-
-  # (Opcional) Ajuda o sistema a reconhecer as fontes instaladas pelo usuário
-  fonts.fontconfig.enable = true;
-
   # 2. Configuração do VS Code
   programs.vscode = {
     enable = true;
@@ -19,21 +14,22 @@
       "breadcrumbs.enabled" = true;
       "catppuccin.accentColor" = "lavender";
       "chaliceIcons.showArrows" = true;
-      "chat.editor.fontFamily" = "DejaVu Sans Mono";
+      # "chat.editor.fontFamily" = lib.mkForce "DejaVu Sans Mono";
       "chat.editor.fontSize" = 16.0;
-      "debug.console.fontFamily" = "DejaVu Sans Mono";
+      # "debug.console.fontFamily" = lib.mkForce "DejaVu Sans Mono";
       "debug.console.fontSize" = 16.0;
       "editor.codeActionsOnSave" = {
         "source.organizeImports" = "explicit";
       };
-      "editor.fontFamily" = "'JetBrainsMono Nerd Font', 'SymbolsNerdFont', 'monospace', monospace";
+      # "editor.fontFamily" =
+      #   lib.mkForce "'JetBrainsMono Nerd Font', 'SymbolsNerdFont', 'monospace', monospace";
       "editor.fontLigatures" = true;
-      "editor.fontSize" = 14;
+      "editor.fontSize" = lib.mkForce 14;
       "editor.formatOnPaste" = true;
       "editor.formatOnSave" = true;
-      "editor.inlayHints.fontFamily" = "DejaVu Sans Mono";
+      # "editor.inlayHints.fontFamily" = lib.mkForce "DejaVu Sans Mono";
       "editor.inlineSuggest.enabled" = true;
-      "editor.inlineSuggest.fontFamily" = "DejaVu Sans Mono";
+      # "editor.inlineSuggest.fontFamily" = lib.mkForce "DejaVu Sans Mono";
       "editor.minimap.enabled" = false;
       "editor.minimap.sectionHeaderFontSize" = 10.285714285714286;
       "editor.mouseWheelZoom" = true;
@@ -55,16 +51,16 @@
       "gopls" = {
         "ui.semanticTokens" = true;
       };
-      "markdown.preview.fontFamily" = "DejaVu Sans";
+      # "markdown.preview.fontFamily" = lib.mkForce "DejaVu Sans";
       "markdown.preview.fontSize" = 16.0;
-      "scm.inputFontFamily" = "DejaVu Sans Mono";
+      # "scm.inputFontFamily" = lib.mkForce "DejaVu Sans Mono";
       "scm.inputFontSize" = 14.857142857142858;
       "screencastMode.fontSize" = 64.0;
       "security.workspace.trust.untrustedFiles" = "open";
       "telemetry.enableCrashReporter" = false;
       "telemetry.enableTelemetry" = false;
-      "terminal.integrated.fontFamily" = "'JetBrainsMono Nerd Font', 'SymbolsNerdFont'";
-      "terminal.integrated.fontSize" = 15;
+      # "terminal.integrated.fontFamily" = lib.mkForce "'JetBrainsMono Nerd Font', 'SymbolsNerdFont'";
+      "terminal.integrated.fontSize" = lib.mkForce 15;
       "update.mode" = "none";
 
       # Configurações do VIM
@@ -226,7 +222,7 @@
       "window.menuBarVisibility" = "classic";
       "window.titleBarStyle" = "custom";
       "window.zoomLevel" = 0.45;
-      "workbench.colorTheme" = "Eva Dark Italic Bold";
+      # "workbench.colorTheme" = "Eva Dark Italic Bold";
       "workbench.editor.limit.enabled" = true;
       "workbench.editor.limit.perEditorGroup" = true;
       "workbench.editor.limit.value" = 10;

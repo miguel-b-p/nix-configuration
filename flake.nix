@@ -41,7 +41,6 @@
             ./configuration.nix
             chaotic.nixosModules.default
             nix-flatpak.nixosModules.nix-flatpak
-            stylix.nixosModules.stylix
             {
               environment.systemPackages = [
                 antigravity-nix.packages.x86_64-linux.default
