@@ -139,6 +139,8 @@
       # Previne que certas instruções de sistema (como SGDT) sejam chamadas em user space.
       "kernel.umip_emul" = 0;
 
+      "kernel.unprivileged_userns_clone" = 1;
+
       # === Segurança do Kernel ===
 
       # Restringe a exposição de endereços de ponteiros do kernel (ex: em /proc/kallsyms).
@@ -253,12 +255,12 @@
       "net.ipv4.tcp_keepalive_probes" = 10;
 
       #Teste
-      "vm.max_map_count" = 2147483642;
-      "kernel.sched_cfs_bandwidth_slice_us" = 3000;
-      "kernel.sched_latency_ns" = 3000000;
-      "kernel.sched_min_granularity_ns" = 300000;
-      "kernel.sched_wakeup_granularity_ns" = 500000;
-      "kernel.sched_nr_migrate" = 128;
+      # "vm.max_map_count" = 2147483642;
+      # "kernel.sched_cfs_bandwidth_slice_us" = 3000;
+      # "kernel.sched_latency_ns" = 3000000;
+      # "kernel.sched_min_granularity_ns" = 300000;
+      # "kernel.sched_wakeup_granularity_ns" = 500000;
+      # "kernel.sched_nr_migrate" = 128;
     };
   };
   # systemd.tmpfiles.rules = [
