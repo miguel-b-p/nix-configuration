@@ -9,12 +9,12 @@
   environment.sessionVariables = {
     MESA_SHADER_CACHE_MAX_SIZE = "12G";
     AMD_VULKAN_ICD = "RADV";
-    # RADV_PERFTEST = "nggc";
+    RADV_PERFTEST = "nggc";
     # RADV_FORCE_VRS = "2x2";
   };
   boot.kernelParams = [
     "amdgpu.ppfeaturemask=0xffffffff"
-    # "amdgpu.dcdebugmask=0x10"
+    "amdgpu.dcdebugmask=0x10"
   ];
 
   hardware = {
@@ -23,7 +23,7 @@
     graphics = {
       enable = true;
       enable32Bit = true;
-      package = pkgs.mesa;
+      package = pkgs.mesa_git;
     };
 
     amdgpu.opencl.enable = true;

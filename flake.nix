@@ -14,6 +14,10 @@
       url = "github:jacopone/antigravity-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    stylix = {
+      url = "github:nix-community/stylix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -25,6 +29,7 @@
       home-manager,
       nix-flatpak,
       antigravity-nix,
+      stylix,
       ...
     }@inputs:
     {
@@ -36,6 +41,7 @@
             ./configuration.nix
             chaotic.nixosModules.default
             nix-flatpak.nixosModules.nix-flatpak
+            stylix.nixosModules.stylix
             {
               environment.systemPackages = [
                 antigravity-nix.packages.x86_64-linux.default

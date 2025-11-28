@@ -25,7 +25,7 @@
   ];
 
   environment.sessionVariables = {
-    KWIN_COMPOSE = "O";
+    #    KWIN_COMPOSE = "O";
     # KWIN_DRM_NO_DIRECT_SCANOUT = "0";
 
     # Força o backend do Qt Quick para software
@@ -35,5 +35,27 @@
     # LIBGL_ALWAYS_SOFTWARE = "0";
   };
   services.libinput.enable = true;
+
+  stylix = {
+    enable = true;
+    image = ./wallpaper.png; # Sua imagem base
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml"; # Opcional: forçar um esquema
+
+    # Unificar fontes
+    fonts = {
+      serif = {
+        package = pkgs.dejavu_fonts;
+        name = "DejaVu Serif";
+      };
+      sansSerif = {
+        package = pkgs.dejavu_fonts;
+        name = "DejaVu Sans";
+      };
+      monospace = {
+        package = pkgs.nerdfonts;
+        name = "JetBrainsMono Nerd Font";
+      };
+    };
+  };
 
 }

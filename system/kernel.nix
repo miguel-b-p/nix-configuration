@@ -10,32 +10,38 @@
     # Define o kernel XanMod Latest e aplica o override para x86-64-v3
     # kernelPackages = pkgs.linuxPackagesFor (
     #   pkgs.linuxKernel.kernels.linux_xanmod_latest.override {
+    #     # 1. PREVENIR ATUALIZAÇÃO AUTOMÁTICA (Fixar Versão)
+    #     argsOverride = rec {
+    #       version = "6.17.9"; # <--- Coloque a versão exata que deseja
+    #       modDirVersion = "${version}-xanmod1"; # Sufixo padrão do XanMod
+
+    #       src = pkgs.fetchFromGitHub {
+    #         owner = "xanmod";
+    #         repo = "linux";
+    #         rev = modDirVersion; # A tag no GitHub geralmente é a versão completa
+    #         sha256 = "sha256-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA="; # <--- Gere o hash correto com 'nix-prefetch-url'
+    #       };
+    #     };
+
+    #     # 2. SUAS OTIMIZAÇÕES (Mantidas do seu código)
     #     structuredExtraConfig = with lib.kernel; {
-    #       # --- 1. Otimização de CPU (Não é padrão no NixOS) ---
-    #       # Força o uso de instruções AVX/AVX2 modernas.
+    #       # --- 1. Otimização de CPU ---
     #       CONFIG_X86_64_V3 = yes;
 
-    #       # --- 2. Latência e Preempção (Restaurar comportamento XanMod) ---
-    #       # O NixOS força "Voluntary" por padrão (bom para servidores), mas mata a
-    #       # responsividade do XanMod. Aqui forçamos o retorno para Full Preempt.
+    #       # --- 2. Latência e Preempção ---
     #       CONFIG_PREEMPT_VOLUNTARY = no;
     #       CONFIG_PREEMPT = yes;
 
-    #       # Garante 500Hz (equilíbrio perfeito do XanMod).
-    #       # O NixOS genérico costuma alterar isso para 300Hz ou 1000Hz.
     #       CONFIG_HZ = freeform "500";
     #       CONFIG_HZ_500 = yes;
 
-    #       # --- 3. Rede (BBR + FQ_PIE por padrão) ---
-    #       # O kernel suporta BBR, mas o NixOS não o ativa por padrão.
-    #       # Isso compila o BBR embutido e o define como padrão sem precisar de sysctl.
+    #       # --- 3. Rede (BBR + FQ_PIE) ---
     #       CONFIG_TCP_CONG_BBR = yes;
     #       CONFIG_DEFAULT_BBR = yes;
     #       CONFIG_NET_SCH_FQ_PIE = yes;
     #       CONFIG_DEFAULT_FQ_PIE = yes;
 
-    #       # --- 4. Limpeza de Overhead (Opcional mas recomendado) ---
-    #       # Desativa debugs que o NixOS costuma deixar ligados e que consomem CPU.
+    #       # --- 4. Limpeza de Overhead ---
     #       CONFIG_DEBUG_KERNEL = no;
     #       CONFIG_SCHED_DEBUG = no;
     #     };
@@ -43,7 +49,7 @@
     #     ignoreConfigErrors = true;
     #   }
     # );
-    kernelPackages = pkgs.linuxPackages_xanmod;
+    kernelPackages = pkgs.linuxPackages_xanmod_latest;
     # Seus módulos
     kernelModules = [
       "tcp_bbr"
@@ -150,7 +156,7 @@
       # Controla a capacidade de carregar um novo kernel em tempo de execução (kexec).
       # Impacto: '1' desabilita o carregamento de novos kernels via kexec. Isso impede que um atacante
       # substitua o kernel em execução por um malicioso sem reiniciar a máquina fisicamente (Cold Boot).
-      "kernel.kexec_load_disabled" = 1;
+      # "kernel.kexec_load_disabled" = 1;
 
       # Controla como as gravações no sysctl são tratadas.
       # Impacto: '1' impõe verificações estritas. Se você tentar escrever em um sysctl numa posição do arquivo que não seja 0, falha.
