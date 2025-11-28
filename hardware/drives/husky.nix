@@ -1,6 +1,7 @@
-{lib, ...}: {
+{ lib, ... }:
+{
   fileSystems."/mnt/husky" = lib.mkForce {
-    device = "/dev/disk/by-uuid/342C28AB71615AB2";
+    device = "/dev/disk/by-uuid/6890CAB85551B637";
     fsType = "ntfs-3g";
     options = [
       "rw"

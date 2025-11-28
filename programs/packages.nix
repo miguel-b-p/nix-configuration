@@ -1,14 +1,13 @@
 { pkgs, inputs, ... }:
 {
   environment.systemPackages = with pkgs; [
-    devbox
+    # devbox
 
     anytype
 
     vivaldi
     chromium
     vesktop
-    (discord.override { withVencord = true; })
 
     windsurf
 
@@ -16,6 +15,8 @@
     obs-studio
     obs-studio-plugins.obs-move-transition
     obs-studio-plugins.obs-scene-as-transition
+    motrix
+    qbittorrent
 
     inputs.flox.packages.${pkgs.system}.default
   ];

@@ -25,16 +25,14 @@
   ];
 
   environment.sessionVariables = {
-    # Força o renderizador do KWin para software (QPainter)
-    # Muitos problemas, algumas janelas nem funcionam direito
-    # KWIN_COMPOSE = "Q";
-    KWIN_COMPOSE = "O2ES";
+    KWIN_COMPOSE = "O";
+    # KWIN_DRM_NO_DIRECT_SCANOUT = "0";
 
     # Força o backend do Qt Quick para software
     # QT_QUICK_BACKEND = "software";
 
     # Desativa aceleração OpenGL (usará llvmpipe/softpipe)
-    # LIBGL_ALWAYS_SOFTWARE = "1";
+    # LIBGL_ALWAYS_SOFTWARE = "0";
   };
   services.libinput.enable = true;
 

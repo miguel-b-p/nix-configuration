@@ -2,14 +2,20 @@
 
 {
 
-  # velora.gpu = "amd";
   environment.systemPackages = with pkgs; [
     pciutils
+    radeontop
   ];
   environment.sessionVariables = {
     MESA_SHADER_CACHE_MAX_SIZE = "12G";
     AMD_VULKAN_ICD = "RADV";
+    # RADV_PERFTEST = "nggc";
+    # RADV_FORCE_VRS = "2x2";
   };
+  boot.kernelParams = [
+    "amdgpu.ppfeaturemask=0xffffffff"
+    # "amdgpu.dcdebugmask=0x10"
+  ];
 
   hardware = {
     enableAllFirmware = true;
@@ -17,7 +23,7 @@
     graphics = {
       enable = true;
       enable32Bit = true;
-      package = pkgs.mesa_git;
+      package = pkgs.mesa;
     };
 
     amdgpu.opencl.enable = true;

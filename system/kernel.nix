@@ -8,42 +8,42 @@
 {
   boot = {
     # Define o kernel XanMod Latest e aplica o override para x86-64-v3
-    kernelPackages = pkgs.linuxPackagesFor (
-      pkgs.linuxKernel.kernels.linux_xanmod_latest.override {
-        structuredExtraConfig = with lib.kernel; {
-          # --- 1. Otimização de CPU (Não é padrão no NixOS) ---
-          # Força o uso de instruções AVX/AVX2 modernas.
-          CONFIG_X86_64_V3 = yes;
+    # kernelPackages = pkgs.linuxPackagesFor (
+    #   pkgs.linuxKernel.kernels.linux_xanmod_latest.override {
+    #     structuredExtraConfig = with lib.kernel; {
+    #       # --- 1. Otimização de CPU (Não é padrão no NixOS) ---
+    #       # Força o uso de instruções AVX/AVX2 modernas.
+    #       CONFIG_X86_64_V3 = yes;
 
-          # --- 2. Latência e Preempção (Restaurar comportamento XanMod) ---
-          # O NixOS força "Voluntary" por padrão (bom para servidores), mas mata a
-          # responsividade do XanMod. Aqui forçamos o retorno para Full Preempt.
-          CONFIG_PREEMPT_VOLUNTARY = no;
-          CONFIG_PREEMPT = yes;
+    #       # --- 2. Latência e Preempção (Restaurar comportamento XanMod) ---
+    #       # O NixOS força "Voluntary" por padrão (bom para servidores), mas mata a
+    #       # responsividade do XanMod. Aqui forçamos o retorno para Full Preempt.
+    #       CONFIG_PREEMPT_VOLUNTARY = no;
+    #       CONFIG_PREEMPT = yes;
 
-          # Garante 500Hz (equilíbrio perfeito do XanMod).
-          # O NixOS genérico costuma alterar isso para 300Hz ou 1000Hz.
-          CONFIG_HZ = freeform "500";
-          CONFIG_HZ_500 = yes;
+    #       # Garante 500Hz (equilíbrio perfeito do XanMod).
+    #       # O NixOS genérico costuma alterar isso para 300Hz ou 1000Hz.
+    #       CONFIG_HZ = freeform "500";
+    #       CONFIG_HZ_500 = yes;
 
-          # --- 3. Rede (BBR + FQ_PIE por padrão) ---
-          # O kernel suporta BBR, mas o NixOS não o ativa por padrão.
-          # Isso compila o BBR embutido e o define como padrão sem precisar de sysctl.
-          CONFIG_TCP_CONG_BBR = yes;
-          CONFIG_DEFAULT_BBR = yes;
-          CONFIG_NET_SCH_FQ_PIE = yes;
-          CONFIG_DEFAULT_FQ_PIE = yes;
+    #       # --- 3. Rede (BBR + FQ_PIE por padrão) ---
+    #       # O kernel suporta BBR, mas o NixOS não o ativa por padrão.
+    #       # Isso compila o BBR embutido e o define como padrão sem precisar de sysctl.
+    #       CONFIG_TCP_CONG_BBR = yes;
+    #       CONFIG_DEFAULT_BBR = yes;
+    #       CONFIG_NET_SCH_FQ_PIE = yes;
+    #       CONFIG_DEFAULT_FQ_PIE = yes;
 
-          # --- 4. Limpeza de Overhead (Opcional mas recomendado) ---
-          # Desativa debugs que o NixOS costuma deixar ligados e que consomem CPU.
-          CONFIG_DEBUG_KERNEL = no;
-          CONFIG_SCHED_DEBUG = no;
-        };
+    #       # --- 4. Limpeza de Overhead (Opcional mas recomendado) ---
+    #       # Desativa debugs que o NixOS costuma deixar ligados e que consomem CPU.
+    #       CONFIG_DEBUG_KERNEL = no;
+    #       CONFIG_SCHED_DEBUG = no;
+    #     };
 
-        ignoreConfigErrors = true;
-      }
-    );
-
+    #     ignoreConfigErrors = true;
+    #   }
+    # );
+    kernelPackages = pkgs.linuxPackages_xanmod;
     # Seus módulos
     kernelModules = [
       "tcp_bbr"
@@ -57,7 +57,6 @@
       "nowatchdog"
       "transparent_hugepage=always"
       "processor.ignore_ppc=1"
-      "amdgpu.ppfeaturemask=0xffffffff"
       "ec_sys.write_support=1"
       "kvm.enable_virt_at_load=0"
       "scsi_mod.use_blk_mq=1"
