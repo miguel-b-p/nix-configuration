@@ -14,9 +14,6 @@
       url = "github:jacopone/antigravity-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    matugen = {
-      url = "github:InioX/Matugen";
-    };
   };
 
   outputs =
@@ -28,7 +25,6 @@
       home-manager,
       nix-flatpak,
       antigravity-nix,
-      matugen,
       ...
     }@inputs:
     {
@@ -39,7 +35,6 @@
           modules = [
             ./configuration.nix
             chaotic.nixosModules.default
-            matugen.nixosModules.default
             nix-flatpak.nixosModules.nix-flatpak
             {
               environment.systemPackages = [

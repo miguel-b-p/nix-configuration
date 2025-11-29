@@ -33,7 +33,7 @@
     extraSpecialArgs = { inherit inputs; };
     useGlobalPkgs = false;
     useUserPackages = true;
-    backupFileExtension = "backup";
+    backupFileExtension = "backup3";
     users.mingas = import ./home.nix; # Aponta para o novo arquivo
   };
 }
