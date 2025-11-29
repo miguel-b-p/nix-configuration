@@ -39,11 +39,11 @@
           modules = [
             ./configuration.nix
             chaotic.nixosModules.default
+            matugen.nixosModules.default
             nix-flatpak.nixosModules.nix-flatpak
             {
               environment.systemPackages = [
                 antigravity-nix.packages.x86_64-linux.default
-                matugen.packages.x86_64-linux.default
               ];
             }
           ];

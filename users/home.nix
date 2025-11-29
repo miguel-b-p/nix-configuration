@@ -17,6 +17,7 @@
   programs.home-manager.enable = true;
 
   imports = [
+    # inputs.matugen.homeManagerModules.default
     ./vscode.nix
     ./mangohud.nix
     ./shell/bash.nix
