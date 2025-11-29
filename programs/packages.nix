@@ -18,6 +18,6 @@
     motrix
     qbittorrent
 
-    inputs.flox.packages.${pkgs.system}.default
+    inputs.flox.packages.${pkgs.stdenv.hostPlatform.system}.default
   ];
 }

@@ -26,9 +26,6 @@
       "disk"
       "input"
     ];
-
-    # Pacotes podem ser movidos para o home.nix se preferir, mas podem ficar aqui também
-    packages = with pkgs; [ ];
   };
 
   # Configuração do Home Manager

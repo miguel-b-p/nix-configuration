@@ -2,6 +2,7 @@
   config,
   pkgs,
   inputs,
+  lib,
   ...
 }:
 
@@ -16,10 +17,9 @@
   programs.home-manager.enable = true;
 
   imports = [
-    inputs.stylix.homeModules.stylix
     ./vscode.nix
     ./mangohud.nix
-    ./stylix.nix
     ./shell/bash.nix
+    ./matugen.nix
   ];
 }

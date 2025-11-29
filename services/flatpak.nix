@@ -12,6 +12,7 @@
       "org.upscayl.Upscayl"
       "org.vinegarhq.Sober"
       "com.ranfdev.DistroShelf"
+      "io.github.kolunmi.Bazaar"
     ];
     update.auto = {
       enable = true;

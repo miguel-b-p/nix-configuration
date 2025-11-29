@@ -14,9 +14,8 @@
       url = "github:jacopone/antigravity-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    stylix = {
-      url = "github:nix-community/stylix";
-      inputs.nixpkgs.follows = "nixpkgs";
+    matugen = {
+      url = "github:/InioX/Matugen";
     };
   };
 
@@ -29,7 +28,7 @@
       home-manager,
       nix-flatpak,
       antigravity-nix,
-      stylix,
+      matugen,
       ...
     }@inputs:
     {
@@ -44,6 +43,7 @@
             {
               environment.systemPackages = [
                 antigravity-nix.packages.x86_64-linux.default
+                matugen.packages.x86_64-linux.default
               ];
             }
           ];

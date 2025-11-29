@@ -20,13 +20,11 @@
     kdePackages.kcalc
     tela-icon-theme
     ffmpegthumbnailer
-
-    gnome-software
   ];
 
   environment.sessionVariables = {
     #    KWIN_COMPOSE = "O";
-    # KWIN_DRM_NO_DIRECT_SCANOUT = "0";
+    KWIN_DRM_NO_DIRECT_SCANOUT = "O2ES";
 
     # Força o backend do Qt Quick para software
     # QT_QUICK_BACKEND = "software";
