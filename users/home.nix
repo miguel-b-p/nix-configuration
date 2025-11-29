@@ -19,7 +19,6 @@
   imports = [
     ./vscode.nix
     ./mangohud.nix
-    ./shell/bash.nix
-    ./shell/fish.nix
+    ./shell
   ];
 }

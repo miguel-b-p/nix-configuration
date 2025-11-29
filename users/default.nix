@@ -2,12 +2,14 @@
   config,
   pkgs,
   inputs,
+  lib,
   ...
 }:
 
 {
-  # Importa o módulo do Home Manager do flake input
-  imports = [ inputs.home-manager.nixosModules.home-manager ];
+  imports = [
+    inputs.home-manager.nixosModules.home-manager
+  ];
 
   users.users.mingas = {
     isNormalUser = true;
@@ -26,14 +28,14 @@
       "disk"
       "input"
     ];
-  };
 
-  # Configuração do Home Manager
+    shell = lib.getExe pkgs.fish; # Configured in shell/fish.nix
+  };
   home-manager = {
     extraSpecialArgs = { inherit inputs; };
     useGlobalPkgs = false;
     useUserPackages = true;
-    backupFileExtension = "backup3";
+    backupFileExtension = "backup";
     users.mingas = import ./home.nix; # Aponta para o novo arquivo
   };
 }

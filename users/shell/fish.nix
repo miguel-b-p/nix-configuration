@@ -1,4 +1,9 @@
-{ pkgs, ... }:
+{
+  pkgs,
+  config,
+  lib,
+  ...
+}:
 
 {
   programs.fish = {
@@ -7,7 +12,6 @@
       set fish_greeting  # sem mensagem inicial
     '';
 
-    # Se usar Home Manager, dá para declarar plugins assim:
     plugins = [
       {
         name = "fzf-fish";
@@ -20,8 +24,7 @@
     ];
   };
 
-  environment.systemPackages = with pkgs; [
-    fish
+  home.packages = with pkgs; [
     fishPlugins.fzf-fish
     fishPlugins.hydro
   ];
