@@ -37,7 +37,6 @@
       sysclean = "nh clean all";
     };
     sessionVariables = {
-      NH_FLAKE = "/home/mingas/nix-configuration";
     };
   };
 }
