@@ -258,20 +258,12 @@
       "net.ipv4.tcp_keepalive_time" = 600;
       "net.ipv4.tcp_keepalive_intvl" = 60;
       "net.ipv4.tcp_keepalive_probes" = 10;
-
-      #Teste
-      # "vm.max_map_count" = 2147483642;
-      # "kernel.sched_cfs_bandwidth_slice_us" = 3000;
-      # "kernel.sched_latency_ns" = 3000000;
-      # "kernel.sched_min_granularity_ns" = 300000;
-      # "kernel.sched_wakeup_granularity_ns" = 500000;
-      # "kernel.sched_nr_migrate" = 128;
     };
   };
-  # systemd.tmpfiles.rules = [
-  #   "w /sys/kernel/debug/sched/latency_ns - - - - 3000000"
-  #   "w /sys/kernel/debug/sched/min_granularity_ns - - - - 300000"
-  #   "w /sys/kernel/debug/sched/wakeup_granularity_ns - - - - 500000"
-  #   "w /sys/kernel/debug/sched/nr_migrate - - - - 128"
-  # ];
+  systemd.tmpfiles.rules = [
+    # Configuração para o THP Shrinker (Kernel 6.12+)
+    # Grava o valor 409 em max_ptes_none para otimizar o split de Hugepages
+    "w! /sys/kernel/mm/transparent_hugepage/khugepaged/max_ptes_none - - - - 409"
+    "w! /sys/kernel/mm/transparent_hugepage/defrag - - - - defer+madvise"
+  ];
 }

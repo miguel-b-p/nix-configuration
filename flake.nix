@@ -2,10 +2,10 @@
   description = "Chaotic-Nyx";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     nix-flatpak.url = "github:gmodena/nix-flatpak";
     home-manager = {
-      url = "https://github.com/nix-community/home-manager/archive/release-25.11.tar.gz";
+      url = "https://github.com/nix-community/home-manager/archive/master.tar.gz";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";

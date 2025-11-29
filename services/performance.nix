@@ -14,8 +14,6 @@
 
     scx = {
       enable = true;
-      # scx existe no nixpkg
-      # package = pkgs.scx_git.full;
       scheduler = "scx_lavd";
       extraArgs = [ "--performance" ];
     };
@@ -35,13 +33,6 @@
       ];
     };
   };
-
-  systemd.tmpfiles.rules = [
-    # Configuração para o THP Shrinker (Kernel 6.12+)
-    # Grava o valor 409 em max_ptes_none para otimizar o split de Hugepages
-    "w! /sys/kernel/mm/transparent_hugepage/khugepaged/max_ptes_none - - - - 409"
-    "w! /sys/kernel/mm/transparent_hugepage/defrag - - - - defer+madvise"
-  ];
 
   zramSwap = {
     enable = true;

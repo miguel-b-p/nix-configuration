@@ -1,8 +1,14 @@
 { config, pkgs, ... }:
 
 {
+  boot = {
+    kernelModules = [
+      "snd-seq"
+      "snd-rawmidi"
+    ];
+    kernelParams = [ "threadirqs" ];
+  };
   security.rtkit.enable = true;
-
   services = {
     pulseaudio.enable = false;
     pipewire = {
