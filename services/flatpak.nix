@@ -8,9 +8,6 @@
   services.flatpak = {
     enable = true;
     packages = [
-      "io.github.thetumultuousunicornofdarkness.cpu-x"
-      "org.upscayl.Upscayl"
-      "org.vinegarhq.Sober"
       "com.ranfdev.DistroShelf"
       "io.github.kolunmi.Bazaar"
     ];
@@ -22,9 +19,11 @@
 
   systemd.services.flatpak-repo = {
     wantedBy = [ "multi-user.target" ];
+    after = [ "network-online.target" ];
+    wants = [ "network-online.target" ];
     path = [ pkgs.flatpak ];
     script = ''
-      flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+      flatpak remote-add --if-not-exists flathub "https://dl.flathub.org/repo/flathub.flatpakrepo"
     '';
   };
 

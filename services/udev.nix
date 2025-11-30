@@ -41,6 +41,12 @@
 
       SUBSYSTEM=="input", MODE="0660", GROUP="input"
       SUBSYSTEM=="usb", ATTRS{idVendor}=="*", ATTRS{idProduct}=="*", MODE="0660", GROUP="input"
+
+      # If a GPU crash is caused by a specific process, kill the PID
+      ACTION=="change", ENV{DEVNAME}=="/dev/dri/card[0-9]", ENV{RESET}=="1", ENV{PID}!="0", RUN+="${pkgs.procps}/bin/kill -9 %E{PID}"
+
+      # Kill SDDM and Gamescope if the GPU crashes and VRAM is lost
+      ACTION=="change", ENV{DEVNAME}=="/dev/dri/card[0-9]", ENV{RESET}=="1", ENV{FLAGS}=="1", RUN+="${pkgs.systemd}/bin/systemctl restart sddm"
     '';
   };
 }

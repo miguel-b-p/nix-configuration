@@ -28,8 +28,8 @@
       "disk"
       "input"
     ];
-
-    shell = lib.getExe pkgs.fish; # Configured in shell/fish.nix
+    ignoreShellProgramCheck = true;
+    shell = pkgs.fish; # Configured in shell/fish.nix
   };
   home-manager = {
     extraSpecialArgs = { inherit inputs; };

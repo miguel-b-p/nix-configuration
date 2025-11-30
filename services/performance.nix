@@ -1,11 +1,19 @@
 { config, pkgs, ... }:
 
 {
-  powerManagement = {
-    enable = true;
-    cpuFreqGovernor = "performance";
-  };
+  # services.auto-cpufreq = {
+  #   enable = true;
+  #   settings = {
+  #     charger = {
+  #       governor = "performance";
+  #       turbo = "auto";
+  #     };
+  #   };
+  # };
+  services.power-profiles-daemon.enable = false;
   services = {
+    system76-scheduler.settings.processScheduler.enable = true;
+    system76-scheduler.settings.cfsProfiles.enable = true;
     ananicy = with pkgs; {
       enable = true;
       package = ananicy-cpp;

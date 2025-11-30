@@ -49,7 +49,7 @@
     #     ignoreConfigErrors = true;
     #   }
     # );
-    kernelPackages = pkgs.linuxPackages_xanmod_latest;
+    kernelPackages = pkgs.linuxPackages_zen;
     # Seus módulos
     kernelModules = [
       "tcp_bbr"
@@ -116,6 +116,8 @@
       # Impacto: 32 bits. Aumenta a entropia do ASLR, dificultando ataques de segurança que tentam
       # prever onde bibliotecas e o heap estão carregados na memória.
       "vm.mmap_rnd_bits" = 32;
+
+      "vm.max_map_count" = 2147483642;
 
       # === Escalonamento e Processamento (Kernel Scheduler/CPU) ===
 
@@ -206,7 +208,9 @@
       # Impacto: "bbr" (Google's Bottleneck Bandwidth and RTT). Otimiza a largura de banda e reduz a latência,
       # lidando muito melhor com perda de pacotes do que o padrão "CUBIC". Requer 'fq' como qdisc.
       "net.ipv4.tcp_congestion_control" = "bbr";
+      "net.ipv6.conf.all.use_tempaddr" = 2;
 
+      "net.ipv4.tcp_mtu_probing" = 1;
       # Limites de memória (em páginas de 4KB) para o stack TCP e UDP.
       # Formato: "min pressure max".
       # Impacto: Valores ajustados para permitir maior uso de memória para conexões de rede antes do kernel começar a restringir (pressure).

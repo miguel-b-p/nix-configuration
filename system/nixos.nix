@@ -22,36 +22,36 @@
     options = "--delete-older-than 14d";
   };
 
-  system.autoUpgrade = {
-    enable = true;
-    flake = inputs.self.outPath;
-    dates = "daily";
-    allowReboot = false;
-  };
+  # system.autoUpgrade = {
+  #   enable = true;
+  #   flake = inputs.self.outPath;
+  #   dates = "daily";
+  #   allowReboot = false;
+  # };
 
-  systemd.services.nixos-flake-update = {
-    description = "Update NixOS flake inputs";
-    serviceConfig = {
-      Type = "oneshot";
-      User = "root";
-      WorkingDirectory = "/etc/nixos";
-      ExecStart = "${pkgs.nixVersions.stable}/bin/nix flake update";
-    };
-    after = [ "network-online.target" ];
-    wants = [ "network-online.target" ];
-  };
+  # systemd.services.nixos-flake-update = {
+  #   description = "Update NixOS flake inputs";
+  #   serviceConfig = {
+  #     Type = "oneshot";
+  #     User = "root";
+  #     WorkingDirectory = "/etc/nixos";
+  #     ExecStart = "${pkgs.nixVersions.stable}/bin/nix flake update";
+  #   };
+  #   after = [ "network-online.target" ];
+  #   wants = [ "network-online.target" ];
+  # };
 
-  systemd.timers.nixos-flake-update = {
-    description = "Daily NixOS flake update timer";
-    wantedBy = [ "timers.target" ];
+  # systemd.timers.nixos-flake-update = {
+  #   description = "Daily NixOS flake update timer";
+  #   wantedBy = [ "timers.target" ];
 
-    timerConfig = {
-      OnCalendar = "daily";
-      OnBootSec = "15min";
-      Persistent = true;
-      RandomizedDelaySec = "1h";
-    };
-  };
+  #   timerConfig = {
+  #     OnCalendar = "daily";
+  #     OnBootSec = "15min";
+  #     Persistent = true;
+  #     RandomizedDelaySec = "1h";
+  #   };
+  # };
 
   systemd.coredump.enable = false;
 
