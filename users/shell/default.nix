@@ -10,7 +10,8 @@
     ./bash.nix
     ./fish.nix
     ./nh.nix
-    ./starship.nix
+    ./kitty/kitty.nix
+    ./oh-my-posh.nix
   ];
 
   programs.atuin = {
