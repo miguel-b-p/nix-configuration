@@ -15,12 +15,14 @@
 
   programs.atuin = {
     enable = true;
-    enableBashIntegration = true;
+    enableBashIntegration = false;
+    enableFishIntegration = true;
   };
 
   programs.fzf = {
     enable = true;
-    enableBashIntegration = true;
+    enableBashIntegration = false;
+    enableFishIntegration = true;
   };
 
   home = {

@@ -18,7 +18,6 @@
       "networkmanager"
       "wheel"
       "podman"
-      "openrazer"
       "docker"
       "libvirtd"
       "kvm"
@@ -27,6 +26,19 @@
       "video"
       "disk"
       "input"
+    ];
+    # Subuid and subgid ranges for user namespaces, fixes distrobox
+    subUidRanges = [
+      {
+        startUid = 100000;
+        count = 65536;
+      }
+    ];
+    subGidRanges = [
+      {
+        startGid = 100000;
+        count = 65536;
+      }
     ];
     ignoreShellProgramCheck = true;
     shell = pkgs.fish; # Configured in shell/fish.nix

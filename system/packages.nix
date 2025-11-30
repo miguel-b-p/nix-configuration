@@ -14,6 +14,7 @@
     moreutils
     nix
     nixfmt
+    wget
   ];
 
   programs.ydotool.enable = true;
