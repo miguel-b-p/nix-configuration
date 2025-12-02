@@ -2,7 +2,9 @@
 
 {
   nixpkgs.overlays = [
-    (import ./preload.nix)
+    (final: prev: {
+      preload = final.callPackage ./preload.nix { };
+    })
   ];
   # services.auto-cpufreq = {
   #   enable = true;
@@ -29,8 +31,6 @@
       extraArgs = [ "--performance" ];
     };
 
-    preload.enable = true;
-
     irqbalance.enable = true;
 
     earlyoom = {
@@ -48,5 +48,15 @@
   zramSwap = {
     enable = true;
     algorithm = "zstd";
+  };
+
+  systemd.services.preload = {
+    description = "Adaptive readahead daemon";
+    wantedBy = [ "multi-user.target" ];
+    after = [ "local-fs.target" ];
+    serviceConfig = {
+      ExecStart = "${pkgs.preload}/sbin/preload -f";
+      Type = "simple";
+    };
   };
 }

@@ -15,7 +15,7 @@ stdenv.mkDerivation rec {
 
   src = fetchurl {
     url = "https://downloads.sourceforge.net/project/preload/preload/${version}/preload-${version}.tar.gz";
-    sha256 = "0000000000000000000000000000000000000000000000000000"; # coloque o hash real aqui
+    sha256 = "0sw15yi8q12ab7n1mbc9lm1mxrdlyhwyydk7v7cm36mj7kl5i9fh";
   };
 
   nativeBuildInputs = [ pkg-config ];
@@ -28,8 +28,11 @@ stdenv.mkDerivation rec {
 
   configureFlags = [
     "--prefix=${placeholder "out"}"
-    "--sysconfdir=/etc"
+    "--sysconfdir=${placeholder "out"}/etc"
+    "--localstatedir=/var"
   ];
+
+  installFlags = [ "localstatedir=${placeholder "out"}/var" ];
 
   # Ajuste se o build falhar; isso é um esqueleto básico.
   meta = with lib; {
