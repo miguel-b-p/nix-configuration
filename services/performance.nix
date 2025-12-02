@@ -1,6 +1,9 @@
 { config, pkgs, ... }:
 
 {
+  nixpkgs.overlays = [
+    (import ./preload.nix)
+  ];
   # services.auto-cpufreq = {
   #   enable = true;
   #   settings = {
@@ -26,7 +29,7 @@
       extraArgs = [ "--performance" ];
     };
 
-    # preload.enable = true;
+    preload.enable = true;
 
     irqbalance.enable = true;
 
