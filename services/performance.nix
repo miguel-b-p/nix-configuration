@@ -26,7 +26,7 @@
       extraArgs = [ "--performance" ];
     };
 
-    preload.enable = true;
+    # preload.enable = true;
 
     irqbalance.enable = true;
 

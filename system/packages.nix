@@ -15,6 +15,9 @@
     nix
     nixfmt
     wget
+    iw
+    usbutils
+    pciutils
   ];
 
   programs.ydotool.enable = true;

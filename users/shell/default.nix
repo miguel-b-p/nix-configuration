@@ -14,6 +14,12 @@
     ./oh-my-posh.nix
   ];
 
+  programs.zoxide = {
+    enable = true;
+    enableBashIntegration = false;
+    enableFishIntegration = true;
+  };
+
   programs.atuin = {
     enable = true;
     enableBashIntegration = false;
