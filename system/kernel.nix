@@ -7,61 +7,62 @@
 
 {
   boot = {
-    kernelPackages =
-      let
-        zenVersion = "6.17.9";
-        zenSuffix = "zen1";
+    kernelPackages = pkgs.linuxPackages_cachyos-lts;
+    # kernelPackages =
+    #   let
+    #     zenVersion = "6.17.9";
+    #     zenSuffix = "zen1";
 
-        # Em vez de fazer override no linux_zen, construímos um novo kernel
-        # usando a função base 'buildLinux'. Isso garante que o structuredExtraConfig seja lido.
-        customZenKernel = pkgs.buildLinux {
-          version = "${zenVersion}-${zenSuffix}";
-          modDirVersion = "${zenVersion}-${zenSuffix}";
+    #     # Em vez de fazer override no linux_zen, construímos um novo kernel
+    #     # usando a função base 'buildLinux'. Isso garante que o structuredExtraConfig seja lido.
+    #     customZenKernel = pkgs.buildLinux {
+    #       version = "${zenVersion}-${zenSuffix}";
+    #       modDirVersion = "${zenVersion}-${zenSuffix}";
 
-          src = pkgs.fetchFromGitHub {
-            owner = "zen-kernel";
-            repo = "zen-kernel";
-            rev = "v${zenVersion}-${zenSuffix}";
-            sha256 = "sha256-OHzYW/uJMPrPkYjXtzfVi8U/5CLsdNxo+zouNYWGNXc=";
-          };
+    #       src = pkgs.fetchFromGitHub {
+    #         owner = "zen-kernel";
+    #         repo = "zen-kernel";
+    #         rev = "v${zenVersion}-${zenSuffix}";
+    #         sha256 = "sha256-OHzYW/uJMPrPkYjXtzfVi8U/5CLsdNxo+zouNYWGNXc=";
+    #       };
 
-          # Herdamos os patches do kernel Zen original do seu Nixpkgs
-          # para manter as otimizações e funcionalidades específicas do Zen.
-          kernelPatches = pkgs.linux_zen.kernelPatches or [ ];
+    #       # Herdamos os patches do kernel Zen original do seu Nixpkgs
+    #       # para manter as otimizações e funcionalidades específicas do Zen.
+    #       kernelPatches = pkgs.linux_zen.kernelPatches or [ ];
 
-          # Agora sim, passado diretamente para o buildLinux, isso funcionará.
-          structuredExtraConfig = with lib.kernel; {
+    #       # Agora sim, passado diretamente para o buildLinux, isso funcionará.
+    #       structuredExtraConfig = with lib.kernel; {
 
-            # --- 1. Otimizações de CPU ---
-            CONFIG_X86_64_V3 = yes;
-            CONFIG_GENERIC_CPU_DEVICES = no;
-            CONFIG_ZEN_INTERACTIVE = yes;
+    #         # --- 1. Otimizações de CPU ---
+    #         CONFIG_X86_64_V3 = yes;
+    #         CONFIG_GENERIC_CPU_DEVICES = no;
+    #         CONFIG_ZEN_INTERACTIVE = yes;
 
-            # --- 2. Latência e Preempção ---
-            CONFIG_PREEMPT_VOLUNTARY = no;
-            CONFIG_PREEMPT = yes;
+    #         # --- 2. Latência e Preempção ---
+    #         CONFIG_PREEMPT_VOLUNTARY = no;
+    #         CONFIG_PREEMPT = yes;
 
-            # --- HZ Settings ---
-            CONFIG_HZ = freeform "1000";
-            CONFIG_HZ_1000 = yes;
-            CONFIG_HZ_250 = no; # Força desativar o padrão para evitar conflitos
+    #         # --- HZ Settings ---
+    #         CONFIG_HZ = freeform "1000";
+    #         CONFIG_HZ_1000 = yes;
+    #         CONFIG_HZ_250 = no; # Força desativar o padrão para evitar conflitos
 
-            # --- 3. Rede (BBR + FQ_PIE) ---
-            CONFIG_TCP_CONG_BBR = yes;
-            CONFIG_DEFAULT_BBR = yes;
-            CONFIG_NET_SCH_FQ_PIE = yes;
-            CONFIG_DEFAULT_FQ_PIE = yes;
+    #         # --- 3. Rede (BBR + FQ_PIE) ---
+    #         CONFIG_TCP_CONG_BBR = yes;
+    #         CONFIG_DEFAULT_BBR = yes;
+    #         CONFIG_NET_SCH_FQ_PIE = yes;
+    #         CONFIG_DEFAULT_FQ_PIE = yes;
 
-            # --- 4. Limpeza de Overhead ---
-            CONFIG_DEBUG_KERNEL = no;
-            CONFIG_SCHED_DEBUG = no;
-          };
+    #         # --- 4. Limpeza de Overhead ---
+    #         CONFIG_DEBUG_KERNEL = no;
+    #         CONFIG_SCHED_DEBUG = no;
+    #       };
 
-          # Se houver erro de opção não usada, mude para true temporariamente para debugar
-          ignoreConfigErrors = true;
-        };
-      in
-      pkgs.linuxPackagesFor customZenKernel;
+    #       # Se houver erro de opção não usada, mude para true temporariamente para debugar
+    #       ignoreConfigErrors = true;
+    #     };
+    #   in
+    #   pkgs.linuxPackagesFor customZenKernel;
 
     # Seus módulos
     kernelModules = [
