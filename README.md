@@ -1,6 +1,6 @@
 # ❄️ NixOS Configuration
 
-![NixOS](https://img.shields.io/badge/NixOS-23.11-blue.svg?style=for-the-badge&logo=nixos&logoColor=white)
+![NixOS](https://img.shields.io/badge/NixOS-26.05-blue.svg?style=for-the-badge&logo=nixos&logoColor=white)
 ![Flakes](https://img.shields.io/badge/Nix-Flakes-blue.svg?style=for-the-badge&logo=nix&logoColor=white)
 ![KDE Plasma](https://img.shields.io/badge/KDE-Plasma-blue.svg?style=for-the-badge&logo=kde&logoColor=white)
 
