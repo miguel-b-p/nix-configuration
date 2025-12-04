@@ -7,6 +7,7 @@
     wayland-utils
 
     btop
+    fastfetch
 
     cacert
     curl
