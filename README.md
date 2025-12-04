@@ -1,4 +1,4 @@
-# ❄️ NixOS Configuration
+# My ❄️ NixOS Configuration
 
 ![NixOS](https://img.shields.io/badge/NixOS-26.05-blue.svg?style=for-the-badge&logo=nixos&logoColor=white)
 ![KDE Plasma](https://img.shields.io/badge/KDE-Plasma-blue.svg?style=for-the-badge&logo=kde&logoColor=white)
@@ -62,3 +62,4 @@ Below is a map of the repository structure, linking to each file with a brief de
 - [**`virtualization/default.nix`**](./virtualization/default.nix) - Virtualization stack (Docker, Podman, Libvirt, QEMU).
 
 ---
+*Made with ❤️ by Mingas*
