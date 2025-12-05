@@ -13,8 +13,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     preload-ng = {
-      url = "path:/home/mingas/projetos/preload-ng";
-      flake = false;
+      url = "github:miguel-b-p/preload-ng";
     };
   };
 
@@ -39,6 +38,7 @@
             ./configuration.nix
             chaotic.nixosModules.default
             nix-flatpak.nixosModules.nix-flatpak
+            preload-ng.nixosModules.default
             {
               environment.systemPackages = [
                 flox.packages.x86_64-linux.default

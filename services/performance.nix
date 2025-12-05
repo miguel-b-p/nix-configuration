@@ -6,23 +6,8 @@
 }:
 
 {
-  nixpkgs.overlays = [
-    (final: prev: {
-      preload = final.callPackage ./preload {
-        preload-ng-src = inputs.preload-ng;
-      };
-    })
-  ];
-  # services.auto-cpufreq = {
-  #   enable = true;
-  #   settings = {
-  #     charger = {
-  #       governor = "performance";
-  #       turbo = "auto";
-  #     };
-  #   };
-  # };
   services.haveged.enable = true;
+  services.preload-ng.enable = true;
 
   services.power-profiles-daemon.enable = false;
   services = {
@@ -57,15 +42,5 @@
   zramSwap = {
     enable = true;
     algorithm = "zstd";
-  };
-
-  systemd.services.preload = {
-    description = "Adaptive readahead daemon";
-    wantedBy = [ "multi-user.target" ];
-    after = [ "local-fs.target" ];
-    serviceConfig = {
-      ExecStart = "${pkgs.preload}/sbin/preload -f";
-      Type = "simple";
-    };
   };
 }
