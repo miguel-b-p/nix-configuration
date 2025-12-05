@@ -3,7 +3,7 @@
 {
   nixpkgs.overlays = [
     (final: prev: {
-      preload = final.callPackage ./preload.nix { };
+      preload = final.callPackage ./preload { };
     })
   ];
   # services.auto-cpufreq = {
@@ -15,6 +15,8 @@
   #     };
   #   };
   # };
+  services.haveged.enable = true;
+
   services.power-profiles-daemon.enable = false;
   services = {
     system76-scheduler.settings.processScheduler.enable = true;

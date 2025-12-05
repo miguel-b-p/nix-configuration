@@ -1,4 +1,4 @@
-{ pkgs, inputs, ... }:
+{ pkgs, ... }:
 {
   environment.systemPackages = with pkgs; [
     # devbox
@@ -18,6 +18,5 @@
     motrix
     qbittorrent
 
-#    inputs.flox.packages.${pkgs.stdenv.hostPlatform.system}.default
   ];
 }

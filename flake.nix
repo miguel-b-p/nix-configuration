@@ -7,7 +7,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
-#    flox.url = "github:flox/flox/latest";
+    flox.url = "github:flox/flox/latest";
     antigravity-nix = {
       url = "github:jacopone/antigravity-nix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -19,7 +19,7 @@
       self,
       nixpkgs,
       chaotic,
- #     flox,
+      flox,
       home-manager,
       nix-flatpak,
       antigravity-nix,
@@ -36,6 +36,7 @@
             nix-flatpak.nixosModules.nix-flatpak
             {
               environment.systemPackages = [
+                flox.packages.x86_64-linux.default
                 antigravity-nix.packages.x86_64-linux.default
               ];
             }

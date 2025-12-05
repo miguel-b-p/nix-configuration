@@ -96,6 +96,8 @@
       "vm.min_free_kbytes" = 162423;
       "vm.mmap_rnd_bits" = 32;
       "vm.max_map_count" = 2147483642;
+      "vm.dirty_ratio" = 5;
+      "vm.dirty_background_ratio" = 10;
 
       "kernel.sched_autogroup_enabled" = 0;
       "kernel.sched_migration_cost_ns" = 5000000;
