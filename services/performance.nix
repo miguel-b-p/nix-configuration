@@ -1,9 +1,16 @@
-{ config, pkgs, ... }:
+{
+  config,
+  pkgs,
+  inputs,
+  ...
+}:
 
 {
   nixpkgs.overlays = [
     (final: prev: {
-      preload = final.callPackage ./preload { };
+      preload = final.callPackage ./preload {
+        preload-ng-src = inputs.preload-ng;
+      };
     })
   ];
   # services.auto-cpufreq = {

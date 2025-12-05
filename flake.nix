@@ -12,6 +12,10 @@
       url = "github:jacopone/antigravity-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    preload-ng = {
+      url = "path:/home/mingas/projetos/preload-ng";
+      flake = false;
+    };
   };
 
   outputs =
@@ -23,6 +27,7 @@
       home-manager,
       nix-flatpak,
       antigravity-nix,
+      preload-ng,
       ...
     }@inputs:
     {
