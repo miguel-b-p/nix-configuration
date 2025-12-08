@@ -1,22 +1,36 @@
-{ pkgs, ... }:
+{ pkgs, inputs, ... }:
+let
+  llm-agents-pkgs = inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system};
+in
 {
-  environment.systemPackages = with pkgs; [
-    # devbox
+  environment.systemPackages =
+    with pkgs;
+    with llm-agents-pkgs;
+    [
+      # Productivity
+      anytype
 
-    anytype
+      # Browsers
+      vivaldi
+      chromium
 
-    vivaldi
-    chromium
-    vesktop
+      # Communication
+      vesktop
 
-    windsurf
+      # Development
+      windsurf
 
-    vlc
-    obs-studio
-    obs-studio-plugins.obs-move-transition
-    obs-studio-plugins.obs-scene-as-transition
-    motrix
-    qbittorrent
+      # Multimedia
+      vlc
+      obs-studio
+      obs-studio-plugins.obs-move-transition
+      obs-studio-plugins.obs-scene-as-transition
 
-  ];
+      # Downloads
+      motrix
+      qbittorrent
+
+      # LLM Agents
+      coderabbit-cli
+    ];
 }
