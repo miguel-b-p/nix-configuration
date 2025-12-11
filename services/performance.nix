@@ -11,6 +11,7 @@
   services.preload-ng = {
     enable = true;
     debug = true;
+    usePrecompiled = false;
     settings = {
       # Faster cycles for NVMe responsiveness
       cycle = 15;
@@ -34,8 +35,10 @@
       autoSave = 1800;
 
       # NixOS-specific paths (Already implemented on preload-ng flake)
-      mapPrefix = "/nix/store/;/run/current-system/;!/";
-      exePrefix = "/nix/store/;/run/current-system/;!/";
+      mapPrefix = "/nix/store/;/run/current-system/;/home/mingas/.local/share/;!/";
+      exePrefix = "/nix/store/;/run/current-system/;/home/mingas/.local/share/;!/";
+
+      predictionAlgorithm = "Markov";
     };
   };
 
