@@ -11,7 +11,9 @@ in
       anytype
 
       # Browsers
-      vivaldi
+      (vivaldi.override {
+        commandLineArgs = "--password-store=basic";
+      })
       chromium
 
       # Communication
