@@ -13,7 +13,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     preload-ng = {
-      url = "/home/mingas/projetos/preload-ng";
+      url = "github:miguel-b-p/preload-ng";
     };
     llm-agents.url = "github:numtide/llm-agents.nix";
     determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/*";
