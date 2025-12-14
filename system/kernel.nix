@@ -7,7 +7,7 @@
 
 {
   boot = {
-    kernelPackages = pkgs.linuxPackages_cachyos-lts;
+    kernelPackages = pkgs.linuxPackages_cachyos-lto;
     # kernelPackages =
     #   let
     #     zenVersion = "6.17.9";

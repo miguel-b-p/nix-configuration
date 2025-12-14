@@ -38,7 +38,7 @@
       mapPrefix = "/nix/store/;/run/current-system/;/home/mingas/.local/share/;!/";
       exePrefix = "/nix/store/;/run/current-system/;/home/mingas/.local/share/;!/";
 
-      predictionAlgorithm = "Markov";
+      # predictionAlgorithm = "VOMM";
     };
   };
 

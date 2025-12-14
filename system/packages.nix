@@ -13,7 +13,6 @@
     curl
     jq
     moreutils
-    nix
     nixfmt
     wget
     iw
