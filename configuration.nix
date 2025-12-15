@@ -14,9 +14,7 @@
     ./hardware/drives
     ./networking
     ./localization
-    # ./desktop/plasma.nix
-    ./desktop/pantheon.nix
-    # ./desktop/cosmic.nix
+    ./desktop/plasma.nix
     ./desktop/xdg-portal.nix
     ./services/audio.nix
     ./services/printing.nix
