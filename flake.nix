@@ -16,7 +16,7 @@
       url = "github:miguel-b-p/preload-ng";
     };
     llm-agents.url = "github:numtide/llm-agents.nix";
-    determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/*";
+    # determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/*";
   };
 
   outputs =
@@ -30,7 +30,7 @@
       antigravity-nix,
       preload-ng,
       llm-agents,
-      determinate,
+      # determinate,
       ...
     }@inputs:
     {
@@ -43,7 +43,7 @@
             chaotic.nixosModules.default
             nix-flatpak.nixosModules.nix-flatpak
             preload-ng.nixosModules.default
-            determinate.nixosModules.default
+            # determinate.nixosModules.default
             {
               environment.systemPackages = [
                 flox.packages.x86_64-linux.default

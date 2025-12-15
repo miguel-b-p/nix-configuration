@@ -25,6 +25,6 @@
     dates = "weekly";
     options = "--delete-older-than 14d";
   };
-
+  nix.package = pkgs.lixPackageSets.latest.lix;
   systemd.coredump.enable = false;
 }
