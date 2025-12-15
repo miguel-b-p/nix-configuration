@@ -12,7 +12,10 @@ let
 
     installPhase = ''
       mkdir -p $out/share/sddm/themes
-      cp -r sddm/Qogir $out/share/sddm/themes/Qogir
+      cp -r sddm/Qogir $out/share/sddm/themes/Qogir-sddm
+      echo "[General]" > $out/share/sddm/themes/Qogir-sddm/theme.conf.user
+      echo "background=${background-package}" >> $out/share/sddm/themes/Qogir-sddm/theme.conf.user
+      echo "type=image" >> $out/share/sddm/themes/Qogir-sddm/theme.conf.user
     '';
   };
 
@@ -28,19 +31,14 @@ in
 {
   environment.systemPackages = with pkgs; [
     custom-qogir-sddm
-    (pkgs.writeTextDir "share/sddm/themes/Qogir/theme.conf.user" ''
-      [General]
-      background = "${background-package}"
-    '')
   ];
 
   services.displayManager.sddm = {
     enable = true;
     wayland.enable = true;
-    theme = "Qogir";
+    theme = "Qogir-sddm";
     extraPackages = [
       custom-qogir-sddm
-      background-package
     ];
   };
 }
