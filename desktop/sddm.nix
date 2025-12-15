@@ -3,24 +3,44 @@
 let
   custom-qogir-sddm = pkgs.stdenv.mkDerivation {
     name = "qogir-sddm-theme";
-    src = ./sddm/Qogir;
+    src = pkgs.fetchFromGitHub {
+      owner = "vinceliuice";
+      repo = "Qogir-kde";
+      rev = "master";
+      sha256 = "zgXwYmpD31vs2Gyg21m0MdOkwqzSn6V21Kva+nvNeVI=";
+    };
 
     installPhase = ''
-      rm -rf $out/share/sddm/themes/Qogir
       mkdir -p $out/share/sddm/themes
-      cp -r $src $out/share/sddm/themes/Qogir
-      chmod -R +w $out/share/sddm/themes/Qogir
+      cp -r sddm/Qogir $out/share/sddm/themes/Qogir
+    '';
+  };
+
+  background-package = pkgs.stdenvNoCC.mkDerivation {
+    name = "background-image";
+    src = ./wallpaper.jpg;
+    dontUnpack = true;
+    installPhase = ''
+      cp $src $out
     '';
   };
 in
 {
   environment.systemPackages = with pkgs; [
     custom-qogir-sddm
+    (pkgs.writeTextDir "share/sddm/themes/Qogir/theme.conf.user" ''
+      [General]
+      background = "${background-package}"
+    '')
   ];
 
   services.displayManager.sddm = {
     enable = true;
     wayland.enable = true;
-    theme = "Qogir"; # nome do tema na pasta /share/sddm/themes
+    theme = "Qogir";
+    extraPackages = [
+      custom-qogir-sddm
+      background-package
+    ];
   };
 }
