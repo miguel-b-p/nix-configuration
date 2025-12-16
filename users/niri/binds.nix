@@ -143,20 +143,13 @@
       "launcher"
       "toggle"
     ];
-    "Mod+D".action.spawn = [
-      "noctalia-shell"
-      "ipc"
-      "call"
-      "launcher"
-      "toggle"
-    ];
 
     # Screenshots
     "Print".action.screenshot-screen = {
       write-to-disk = true;
     };
-    "Mod+Shift+Alt+S".action.screenshot-window = [ ];
-    "Mod+Shift+S".action.screenshot = {
+    "Mod+Alt+Print".action.screenshot-window = [ ];
+    "Mod+Shift+Print".action.screenshot = {
       show-pointer = false;
     };
 
@@ -178,29 +171,24 @@
     "Mod+Period".action.expel-window-from-column = [ ];
     "Mod+C".action.center-visible-columns = [ ];
     "Mod+Tab".action.switch-focus-between-floating-and-tiling = [ ];
+    "Mod+Shift+Space".action.fullscreen-window = [ ];
 
     # Resize
-    "Mod+Minus".action.set-column-width = "-10%";
-    "Mod+Plus".action.set-column-width = "+10%";
-    "Mod+Shift+Minus".action.set-window-height = "-10%";
-    "Mod+Shift+Plus".action.set-window-height = "+10%";
+    "Mod+Alt+Left".action.set-column-width = "-10%";
+    "Mod+Alt+Right".action.set-column-width = "+10%";
+    "Mod+Alt+Up".action.set-window-height = "-10%";
+    "Mod+Alt+Down".action.set-window-height = "+10%";
 
     # Focus navigation
-    "Mod+H".action.focus-column-left = [ ];
-    "Mod+L".action.focus-column-right = [ ];
-    "Mod+J".action.focus-window-or-workspace-down = [ ];
-    "Mod+K".action.focus-window-or-workspace-up = [ ];
     "Mod+Left".action.focus-column-left = [ ];
     "Mod+Right".action.focus-column-right = [ ];
     "Mod+Down".action.focus-workspace-down = [ ];
     "Mod+Up".action.focus-workspace-up = [ ];
 
     # Move columns
-    "Mod+Shift+H".action.move-column-left = [ ];
-    "Mod+Shift+L".action.move-column-right = [ ];
-    "Mod+Shift+K".action.move-column-to-workspace-up = [ ];
-    "Mod+Shift+J".action.move-column-to-workspace-down = [ ];
-    "Mod+Shift+Ctrl+J".action.move-column-to-monitor-down = [ ];
-    "Mod+Shift+Ctrl+K".action.move-column-to-monitor-up = [ ];
+    "Mod+Shift+Left".action.move-column-left = [ ];
+    "Mod+Shift+Right".action.move-column-right = [ ];
+    "Mod+Shift+Up".action.move-column-to-workspace-up = [ ];
+    "Mod+Shift+Down".action.move-column-to-workspace-down = [ ];
   };
 }
