@@ -19,6 +19,7 @@
   imports = [
     ./vscode.nix
     ./mangohud.nix
+    ./wm/niri
     ./shell
   ];
 }

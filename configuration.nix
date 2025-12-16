@@ -29,11 +29,12 @@
     ./programs/packages.nix
     ./system/kernel.nix
     ./system/packages.nix
-    # ./system/fonts.nix
+    ./system/fonts.nix
     ./system/nixos.nix
     ./system/unbound.nix
     ./virtualization
     ./users
+    ./desktop/greetd.nix
   ];
 
   system.stateVersion = "26.05";

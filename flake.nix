@@ -20,6 +20,10 @@
       url = "github:noctalia-dev/noctalia-shell";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    niri = {
+      url = "github:sodiboo/niri-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     # determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/*";
   };
 
@@ -35,6 +39,7 @@
       preload-ng,
       llm-agents,
       noctalia,
+      niri,
       # determinate,
       ...
     }@inputs:
@@ -53,6 +58,13 @@
               environment.systemPackages = [
                 flox.packages.x86_64-linux.default
                 antigravity-nix.packages.x86_64-linux.default
+              ];
+            }
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.sharedModules = [
+                niri.homeModules.niri
+                noctalia.homeModules.default
               ];
             }
           ];
