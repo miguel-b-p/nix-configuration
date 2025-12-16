@@ -190,5 +190,12 @@
     "Mod+Shift+Right".action.move-column-right = [ ];
     "Mod+Shift+Up".action.move-column-to-workspace-up = [ ];
     "Mod+Shift+Down".action.move-column-to-workspace-down = [ ];
+
+    # Reload
+    "Mod+Shift+R".action.spawn = [
+      "sh"
+      "-c"
+      "niri msg action config-reload && systemctl --user restart noctalia-shell"
+    ];
   };
 }

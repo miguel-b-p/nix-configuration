@@ -1,11 +1,11 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 {
   programs.noctalia-shell = {
     enable = true;
     settings = {
       bar = {
-        density = "compact";
-        position = "right";
+        density = "comfortable";
+        position = "top";
         showCapsule = false;
         widgets = {
           left = [
@@ -14,10 +14,7 @@
               useDistroLogo = true;
             }
             {
-              id = "WiFi";
-            }
-            {
-              id = "Bluetooth";
+              id = "Tray";
             }
           ];
           center = [
@@ -26,13 +23,19 @@
               id = "Workspace";
               labelMode = "none";
             }
+            {
+              id = "SystemMonitor";
+              cpuUsage = true;
+              cpuTemperature = true;
+              gpuTemperature = true;
+              memoryUsage = true;
+              memoryAsPercentage = true;
+              networkTraffic = true;
+              storageUsage = true;
+              usePrimaryColor = true;
+            }
           ];
           right = [
-            {
-              alwaysShowPercentage = false;
-              id = "Battery";
-              warningThreshold = 30;
-            }
             {
               formatHorizontal = "HH:mm";
               formatVertical = "HH mm";
@@ -54,4 +57,5 @@
       };
     };
   };
+  programs.noctalia-shell.systemd.enable = true;
 }

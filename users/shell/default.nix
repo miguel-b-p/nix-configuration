@@ -10,7 +10,6 @@
     ./bash.nix
     ./fish.nix
     ./nh.nix
-    ./kitty/kitty.nix
     ./oh-my-posh.nix
   ];
 

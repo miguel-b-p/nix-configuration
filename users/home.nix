@@ -21,5 +21,6 @@
     ./mangohud.nix
     ./niri
     ./shell
+    ./kitty
   ];
 }

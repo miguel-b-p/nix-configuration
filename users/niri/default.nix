@@ -14,12 +14,15 @@
             variant = "abnt2";
             options = "srvrkeys:none";
           };
+          repeat-delay = 200; # Tempo até começar a repetir (ms)
+          repeat-rate = 50; # Repetições por segundo
+        };
+        mouse = {
+          accel-profile = "flat"; # Desativa aceleração
+          accel-speed = -0.1; # Velocidade mais lenta (-1.0 a 1.0)
         };
       };
       spawn-at-startup = [
-        {
-          command = [ "noctalia-shell" ];
-        }
         {
           command = [ "xwayland-satellite" ];
         }
@@ -103,6 +106,7 @@
   ];
 
   home.packages = with pkgs; [
+    xfce.thunar
     xwayland-satellite
   ];
 }

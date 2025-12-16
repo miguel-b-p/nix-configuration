@@ -7,6 +7,6 @@
 {
   programs.kitty = {
     enable = true;
-    extraConfig = builtins.readFile ./macchiato.conf;
+    # extraConfig = builtins.readFile ./macchiato.conf;
   };
 }
