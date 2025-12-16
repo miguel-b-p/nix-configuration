@@ -14,7 +14,7 @@
     ./hardware/drives
     ./networking
     ./localization
-    ./desktop/plasma.nix
+    # ./desktop/plasma.nix
     ./desktop/xdg-portal.nix
     ./services/audio.nix
     ./services/printing.nix
@@ -29,7 +29,7 @@
     ./programs/packages.nix
     ./system/kernel.nix
     ./system/packages.nix
-    ./system/fonts.nix
+    # ./system/fonts.nix
     ./system/nixos.nix
     ./system/unbound.nix
     ./virtualization

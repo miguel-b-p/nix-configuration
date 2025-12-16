@@ -16,6 +16,10 @@
       url = "github:miguel-b-p/preload-ng";
     };
     llm-agents.url = "github:numtide/llm-agents.nix";
+    noctalia = {
+      url = "github:noctalia-dev/noctalia-shell";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     # determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/*";
   };
 
@@ -30,6 +34,7 @@
       antigravity-nix,
       preload-ng,
       llm-agents,
+      noctalia,
       # determinate,
       ...
     }@inputs:
