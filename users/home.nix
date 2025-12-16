@@ -16,10 +16,15 @@
 
   programs.home-manager.enable = true;
 
+  home.packages = with pkgs; [
+    xwayland-satellite
+  ];
+
   imports = [
     ./vscode.nix
     ./mangohud.nix
     ./niri
     ./shell
+    ./quickshell
   ];
 }

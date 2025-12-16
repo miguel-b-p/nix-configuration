@@ -220,6 +220,23 @@ in
           };
         };
       };
+      spawn-at-startup = [
+        {
+          command = [ "noctalia-shell" ];
+        }
+        {
+          command = [ "xwayland-satellite" ];
+        }
+      ];
+      outputs = {
+        "HDMI-A-1" = {
+          mode = {
+            width = 1920;
+            height = 1080;
+            refresh = 100.0;
+          };
+        };
+      };
       # Styling configuration
       overview = {
         workspace-shadow.enable = false;

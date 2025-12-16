@@ -16,15 +16,8 @@
       url = "github:miguel-b-p/preload-ng";
     };
     llm-agents.url = "github:numtide/llm-agents.nix";
-    noctalia = {
-      url = "github:noctalia-dev/noctalia-shell";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    niri = {
-      url = "github:sodiboo/niri-flake";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    # determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/*";
+    noctalia.url = "github:noctalia-dev/noctalia-shell";
+    niri.url = "github:sodiboo/niri-flake";
   };
 
   outputs =
@@ -40,7 +33,6 @@
       llm-agents,
       noctalia,
       niri,
-      # determinate,
       ...
     }@inputs:
     {
@@ -53,7 +45,6 @@
             chaotic.nixosModules.default
             nix-flatpak.nixosModules.nix-flatpak
             preload-ng.nixosModules.default
-            # determinate.nixosModules.default
             {
               environment.systemPackages = [
                 flox.packages.x86_64-linux.default
