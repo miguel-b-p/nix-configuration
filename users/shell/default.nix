@@ -10,7 +10,7 @@
     ./bash.nix
     ./fish.nix
     ./nh.nix
-    ./oh-my-posh.nix
+    ./oh-my-posh
   ];
 
   programs.zoxide = {

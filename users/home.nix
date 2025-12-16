@@ -19,6 +19,7 @@
   imports = [
     ./vscode.nix
     ./mangohud.nix
+    ./nh.nix
     ./niri
     ./shell
     ./kitty
