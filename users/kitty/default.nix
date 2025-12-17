@@ -7,6 +7,6 @@
 {
   programs.kitty = {
     enable = true;
-    extraConfig = "include /home/mingas/.config/kitty/themes/noctalia.conf";
+    extraConfig = "include ${config.home.homeDirectory}/.config/kitty/colors.conf";
   };
 }

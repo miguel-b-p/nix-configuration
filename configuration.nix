@@ -37,5 +37,7 @@
     ./desktop/greetd.nix
   ];
 
+  programs.dconf.enable = true;
+
   system.stateVersion = "26.05";
 }

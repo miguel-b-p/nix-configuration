@@ -9,6 +9,17 @@
   programs.niri = {
     enable = true;
     settings = {
+      environment = {
+        CLUTTER_BACKEND = "wayland";
+        NIXOS_OZONE_WL = "1";
+        QT_QPA_PLATFORM = "wayland;xcb";
+        QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
+        SDL_VIDEODRIVER = "wayland";
+        # WLR_RENDERER = "vulkan";
+        WLR_NO_HARDWARE_CURSORS = "1";
+        QT_QPA_PLATFORMTHEME = "qt6ct";
+        GTK_IM_MODULE = "simple";
+      };
       input = {
         keyboard = {
           xkb = {
@@ -43,11 +54,16 @@
         workspace-shadow.enable = false;
         backdrop-color = "transparent";
       };
-
+      cursor = {
+        size = 20;
+        theme = "everforest-cursors";
+      };
       layout = {
         background-color = "transparent";
         focus-ring.enable = false;
         border = {
+          active-color = "#d79921";
+          inactive-color = "#504945";
           enable = true;
           width = 2;
         };
@@ -107,6 +123,7 @@
     ./rules.nix
     ./binds.nix
     ./noctalia.nix
+    ./matugen.nix
   ];
 
   home.packages = with pkgs; [
