@@ -44,10 +44,10 @@
     };
   };
 
-  # services.power-profiles-daemon.enable = false;
+  services.power-profiles-daemon.enable = false;
   services = {
-    # system76-scheduler.settings.processScheduler.enable = true;
-    # system76-scheduler.settings.cfsProfiles.enable = true;
+    system76-scheduler.settings.processScheduler.enable = true;
+    system76-scheduler.settings.cfsProfiles.enable = true;
     ananicy = with pkgs; {
       enable = true;
       package = ananicy-cpp;

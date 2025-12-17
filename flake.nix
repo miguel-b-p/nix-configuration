@@ -18,7 +18,6 @@
     llm-agents.url = "github:numtide/llm-agents.nix";
     noctalia.url = "github:noctalia-dev/noctalia-shell";
     niri.url = "github:sodiboo/niri-flake";
-    matugen.url = "github:InioX/matugen";
   };
 
   outputs =
@@ -57,7 +56,6 @@
               home-manager.sharedModules = [
                 niri.homeModules.niri
                 noctalia.homeModules.default
-                inputs.matugen.homeManagerModules.default
               ];
             }
           ];

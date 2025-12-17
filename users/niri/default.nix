@@ -5,6 +5,13 @@
   lib,
   ...
 }:
+let
+  gruvboxTheme = pkgs.gruvbox-gtk-theme.override {
+    colorVariants = [ "dark" ];
+    themeVariants = [ "default" ];
+    tweakVariants = [ "medium" ];
+  };
+in
 {
   programs.niri = {
     enable = true;
@@ -27,7 +34,7 @@
             variant = "abnt2";
             options = "srvrkeys:none";
           };
-          repeat-delay = 200; # Tempo até começar a repetir (ms)
+          repeat-delay = 270; # Tempo até começar a repetir (ms)
           repeat-rate = 50; # Repetições por segundo
         };
         mouse = {
@@ -39,6 +46,20 @@
         {
           command = [ "xwayland-satellite" ];
         }
+        {
+          command = [
+            "qs"
+            "-c"
+            "noctalia-shell"
+            "ipc"
+            "call"
+            "wallpaper"
+            "set"
+            "/home/mingas/gruvbox-dark-rainbow.png"
+            "HDMI-A-1"
+          ];
+        }
+
       ];
       outputs = {
         "HDMI-A-1" = {
@@ -55,15 +76,15 @@
         backdrop-color = "transparent";
       };
       cursor = {
-        size = 20;
+        size = 30;
         theme = "everforest-cursors";
       };
       layout = {
         background-color = "transparent";
         focus-ring.enable = false;
         border = {
-          active-color = "#d79921";
-          inactive-color = "#504945";
+          active.color = "#d79921";
+          inactive.color = "#504945";
           enable = true;
           width = 2;
         };
@@ -111,23 +132,63 @@
     };
 
   };
-  home.pointerCursor = {
-    package = pkgs.everforest-cursors;
-    name = "everforest-cursors";
-    size = 20;
-    gtk.enable = true;
-    x11.enable = true;
-  };
 
   imports = [
     ./rules.nix
     ./binds.nix
     ./noctalia.nix
-    ./matugen.nix
   ];
 
+  # Deixa o GTK3 usando adw-gtk3 de forma declarativa (evita precisar do nwg-look)
+  gtk = {
+    enable = true;
+    theme = {
+      name = "Gruvbox-Dark-Medium";
+      package = gruvboxTheme;
+    };
+    iconTheme = {
+      name = "Gruvbox-Plus-Dark";
+      package = pkgs.gruvbox-plus-icons;
+    };
+    gtk3.extraConfig = {
+      gtk-application-prefer-dark-theme = 1;
+    };
+    gtk4.extraConfig = {
+      gtk-application-prefer-dark-theme = 1;
+    };
+  };
+
+  dconf.settings = {
+    "org/gnome/desktop/interface" = {
+      color-scheme = "prefer-dark";
+      gtk-theme = "Gruvbox-Dark-Medium";
+    };
+  };
+
+  # Link do tema para pasta local, permitindo que Flatpaks e apps GTK4 o encontrem via filesystem
+  home.file.".local/share/themes/Gruvbox-Dark-Medium".source =
+    "${gruvboxTheme}/share/themes/Gruvbox-Dark-Medium";
+  home.sessionVariables = {
+    GTK_THEME = "Gruvbox-Dark-Medium";
+    XDG_DATA_DIRS = "${gruvboxTheme}/share:$XDG_DATA_DIRS";
+    XDG_ICON_DIR = "${pkgs.gruvbox-plus-icons}/share/icons/Gruvbox-Plus-Dark";
+    GSETTINGS_SCHEMA_DIR = "${pkgs.gsettings-desktop-schemas}/share/gsettings-schemas/${pkgs.gsettings-desktop-schemas.name}/glib-2.0/schemas";
+  };
+
+  home.pointerCursor = {
+    package = pkgs.everforest-cursors;
+    name = "everforest-cursors";
+    size = 30;
+    gtk.enable = true;
+    x11.enable = true;
+  };
+
   home.packages = with pkgs; [
-    xfce.thunar
+    nautilus
     xwayland-satellite
+    adw-gtk3
+    qt6Packages.qt6ct
+    nwg-look
+    matugen
   ];
 }

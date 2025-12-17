@@ -2,6 +2,7 @@
 {
   programs.noctalia-shell = {
     enable = true;
+
     settings = {
       bar = {
         density = "comfortable";
@@ -13,9 +14,7 @@
               id = "ControlCenter";
               useDistroLogo = true;
             }
-            {
-              id = "Tray";
-            }
+            { id = "Tray"; }
           ];
           center = [
             {
@@ -37,25 +36,31 @@
           ];
           right = [
             {
+              id = "Clock";
               formatHorizontal = "HH:mm";
               formatVertical = "HH mm";
-              id = "Clock";
               useMonospacedFont = true;
               usePrimaryColor = true;
             }
           ];
         };
       };
-      colorSchemes.predefinedScheme = "Monochrome";
+      dock = {
+        enable = false;
+      };
+
       general = {
-        avatarImage = "/home/drfoobar/.face";
+        avatarImage = "/home/mingas/.face";
         radiusRatio = 0.2;
       };
+
       location = {
         monthBeforeDay = true;
         name = "São Paulo, Brazil";
       };
     };
   };
+
+  # Preferível: só UM lugar habilita o serviço (você já está usando HM, então ok)
   programs.noctalia-shell.systemd.enable = true;
 }

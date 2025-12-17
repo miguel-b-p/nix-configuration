@@ -7,6 +7,6 @@
 {
   programs.kitty = {
     enable = true;
-    extraConfig = "include ${config.home.homeDirectory}/.config/kitty/colors.conf";
+    extraConfig = builtins.readFile ./config.conf;
   };
 }
