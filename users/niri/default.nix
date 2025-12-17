@@ -1,6 +1,8 @@
 {
   pkgs,
   inputs,
+  config,
+  lib,
   ...
 }:
 {
@@ -42,18 +44,12 @@
         backdrop-color = "transparent";
       };
 
-      cursor = {
-        size = 20;
-      };
-
       layout = {
         background-color = "transparent";
         focus-ring.enable = false;
         border = {
           enable = true;
           width = 2;
-          active.color = "#0d5ba5";
-          inactive.color = "#204c78";
         };
         shadow = {
           enable = false;
@@ -97,6 +93,14 @@
         }
       ];
     };
+
+  };
+  home.pointerCursor = {
+    package = pkgs.everforest-cursors;
+    name = "everforest-cursors";
+    size = 20;
+    gtk.enable = true;
+    x11.enable = true;
   };
 
   imports = [

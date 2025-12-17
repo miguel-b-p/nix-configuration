@@ -55,6 +55,12 @@
         monthBeforeDay = true;
         name = "São Paulo, Brazil";
       };
+      ui = {
+        gtk.enable = true;
+        qt.enable = true;
+      };
+      compositors.niri.enable = true;
+      terminal.kitty.enable = true;
     };
   };
   programs.noctalia-shell.systemd.enable = true;

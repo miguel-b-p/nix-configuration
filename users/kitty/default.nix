@@ -7,6 +7,6 @@
 {
   programs.kitty = {
     enable = true;
-    # extraConfig = builtins.readFile ./macchiato.conf;
+    extraConfig = "include /home/mingas/.config/kitty/themes/noctalia.conf";
   };
 }
