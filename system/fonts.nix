@@ -2,7 +2,10 @@
 
 {
   fonts = {
-    fontDir.enable = true;
+    fontDir = {
+      enable = true;
+      decompressFonts = true;
+    };
     packages = with pkgs; [
       dejavu_fonts
       nerd-fonts.jetbrains-mono
@@ -11,6 +14,16 @@
 
     fontconfig = {
       enable = true;
+      antialias = true;
+      hinting = {
+        enable = true;
+        autohint = false;
+        style = "full";
+      };
+      subpixel = {
+        lcdfilter = "default";
+        rgba = "rgb";
+      };
       defaultFonts = {
         sansSerif = [ "DejaVu Sans" ];
         serif = [ "DejaVu Serif" ];

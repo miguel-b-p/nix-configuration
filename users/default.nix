@@ -41,7 +41,8 @@
       }
     ];
     ignoreShellProgramCheck = true;
-    shell = pkgs.fish; # Configured in shell/fish.nix
+    # shell = pkgs.fish; # Configured in shell/fish.nix
+    shell = pkgs.nushell;
   };
   home-manager = {
     extraSpecialArgs = { inherit inputs; };
