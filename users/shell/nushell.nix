@@ -5,5 +5,6 @@
     environmentVariables = {
       NH_FLAKE = "/home/mingas/nix-configuration";
     };
+    extraConfig = builtins.readFile ./fzf-config.nu;
   };
 }

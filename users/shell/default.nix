@@ -31,7 +31,7 @@
     enable = true;
     enableBashIntegration = false;
     enableFishIntegration = true;
-    enableNushellIntegration = true;
+    # enableNushellIntegration = true;
   };
 
   home = {
