@@ -1,14 +1,12 @@
 { lib, ... }:
 {
   fileSystems."/mnt/husky" = lib.mkForce {
-    device = "/dev/disk/by-uuid/6890CAB85551B637";
-    fsType = "ntfs-3g";
+    device = "/dev/disk/by-uuid/d284b8ab-12d4-44c3-8cd0-fed4f96a3d51";
+    fsType = "btrfs";
     options = [
       "rw"
-      "uid=1000"
-      "gid=100"
       "noatime"
-      "umask=000"
+      "compress=zstd"
       "nofail"
       "x-gvfs-show"
       "x-systemd.mount-timeout=5"

@@ -4,6 +4,13 @@
     enable = true;
 
     settings = {
+      colorSchemes = {
+        useWallpaperColors = false; # Desliga cores do wallpaper para usar predefined
+        predefinedScheme = "Gruvbox"; # Aqui o nome exato do tema (capital G maiúsculo)
+        darkMode = true; # Ou false se quiser light, mas Gruvbox é dark
+        # schedulingMode = "off";  # Opcional, se não quiser schedule automático
+        generateTemplatesForPredefined = false; # Opcional, para aplicar em apps como GTK/Qt
+      };
       bar = {
         density = "comfortable";
         position = "top";

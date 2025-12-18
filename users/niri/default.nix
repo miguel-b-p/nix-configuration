@@ -148,7 +148,11 @@ in
     };
     iconTheme = {
       name = "Gruvbox-Plus-Dark";
-      package = pkgs.gruvbox-plus-icons;
+      package = (
+        pkgs.gruvbox-plus-icons.override {
+          folder-color = "yellow";
+        }
+      );
     };
     gtk3.extraConfig = {
       gtk-application-prefer-dark-theme = 1;
@@ -181,6 +185,27 @@ in
     size = 30;
     gtk.enable = true;
     x11.enable = true;
+  };
+
+  xdg = {
+    enable = true; # Opcional, mas recomendado
+    mimeApps = {
+      enable = true;
+      defaultApplications = {
+        # Navegador padrão: Vivaldi para web e URLs
+        "text/html" = "vivaldi-stable.desktop";
+        "x-scheme-handler/http" = "vivaldi-stable.desktop";
+        "x-scheme-handler/https" = "vivaldi-stable.desktop";
+        "x-scheme-handler/about" = "vivaldi-stable.desktop";
+        "x-scheme-handler/unknown" = "vivaldi-stable.desktop";
+
+        # Explorador de arquivos: Nautilus para pastas
+        "inode/directory" = "org.gnome.Nautilus.desktop";
+
+        # Opcional: mais MIME comuns para reforçar
+        "application/x-gnome-saved-search" = "org.gnome.Nautilus.desktop";
+      };
+    };
   };
 
   home.packages = with pkgs; [
