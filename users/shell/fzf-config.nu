@@ -7,7 +7,7 @@ $env.config = ($env.config | upsert keybindings (
         mode: [emacs, vi_normal, vi_insert]
         event: {
             send: executehostcommand
-            cmd: "commandline (history | each { |it| $it.command } | uniq | reverse | str join (char -i 0) | fzf --read0 --layout=reverse --height=40% -q (commandline) | decode utf-8 | str trim)"
+            cmd: "commandline edit --replace (history | each { |it| $it.command } | uniq | reverse | str join (char -i 0) | fzf --read0 --layout=reverse --height=40% -q (commandline) | decode utf-8 | str trim)"
         }
     }
     | append {
@@ -17,7 +17,7 @@ $env.config = ($env.config | upsert keybindings (
         mode: [emacs, vi_normal, vi_insert]
         event: {
             send: executehostcommand
-            cmd: "commandline (fzf --layout=reverse --height=40% -q (commandline) | decode utf-8 | str trim)"
+            cmd: "commandline edit --replace (fzf --layout=reverse --height=40% -q (commandline) | decode utf-8 | str trim)"
         }
     }
 ))

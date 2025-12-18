@@ -44,6 +44,8 @@
     # shell = pkgs.fish; # Configured in shell/fish.nix
     shell = pkgs.nushell;
   };
+  users.defaultUserShell = pkgs.nushell;
+
   home-manager = {
     extraSpecialArgs = { inherit inputs; };
     useGlobalPkgs = false;

@@ -8,7 +8,6 @@
 {
   imports = [
     ./bash.nix
-    ./fish.nix
     ./nushell.nix
     ./oh-my-posh
   ];
@@ -16,21 +15,18 @@
   programs.zoxide = {
     enable = true;
     enableBashIntegration = false;
-    enableFishIntegration = true;
     enableNushellIntegration = true;
   };
 
   programs.atuin = {
     enable = true;
     enableBashIntegration = false;
-    enableFishIntegration = true;
     enableNushellIntegration = true;
   };
 
   programs.fzf = {
     enable = true;
     enableBashIntegration = false;
-    enableFishIntegration = true;
     # enableNushellIntegration = true;
   };
 
