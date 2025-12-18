@@ -154,7 +154,8 @@
     };
 
     # Terminal
-    "Mod+T".action.spawn = "kitty";
+    "Mod+K".action.spawn = "kitty";
+    "Mod+G".action.spawn = "ghostty";
 
     # Window management
     "Mod+Q".action.close-window = [ ];

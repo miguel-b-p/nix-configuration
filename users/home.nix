@@ -23,5 +23,6 @@
     ./niri
     ./shell
     ./kitty
+    ./ghostty
   ];
 }

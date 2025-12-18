@@ -8,7 +8,7 @@
 let
   gruvboxTheme = pkgs.gruvbox-gtk-theme.override {
     colorVariants = [ "dark" ];
-    themeVariants = [ "default" ];
+    themeVariants = [ "orange" ];
     tweakVariants = [ "medium" ];
   };
 in
@@ -143,14 +143,14 @@ in
   gtk = {
     enable = true;
     theme = {
-      name = "Gruvbox-Dark-Medium";
+      name = "Gruvbox-Orange-Dark-Medium";
       package = gruvboxTheme;
     };
     iconTheme = {
       name = "Gruvbox-Plus-Dark";
       package = (
         pkgs.gruvbox-plus-icons.override {
-          folder-color = "yellow";
+          folder-color = "caramel";
         }
       );
     };
@@ -165,15 +165,15 @@ in
   dconf.settings = {
     "org/gnome/desktop/interface" = {
       color-scheme = "prefer-dark";
-      gtk-theme = "Gruvbox-Dark-Medium";
+      gtk-theme = "Gruvbox-Orange-Dark-Medium";
     };
   };
 
   # Link do tema para pasta local, permitindo que Flatpaks e apps GTK4 o encontrem via filesystem
-  home.file.".local/share/themes/Gruvbox-Dark-Medium".source =
-    "${gruvboxTheme}/share/themes/Gruvbox-Dark-Medium";
+  home.file.".local/share/themes/Gruvbox-Orange-Dark-Medium".source =
+    "${gruvboxTheme}/share/themes/Gruvbox-Orange-Dark-Medium";
   home.sessionVariables = {
-    GTK_THEME = "Gruvbox-Dark-Medium";
+    GTK_THEME = "Gruvbox-Orange-Dark-Medium";
     XDG_DATA_DIRS = "${gruvboxTheme}/share:$XDG_DATA_DIRS";
     XDG_ICON_DIR = "${pkgs.gruvbox-plus-icons}/share/icons/Gruvbox-Plus-Dark";
     GSETTINGS_SCHEMA_DIR = "${pkgs.gsettings-desktop-schemas}/share/gsettings-schemas/${pkgs.gsettings-desktop-schemas.name}/glib-2.0/schemas";
