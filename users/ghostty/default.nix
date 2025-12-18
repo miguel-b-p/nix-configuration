@@ -1,4 +1,4 @@
-{pkgs, ...}:
+{ pkgs, ... }:
 {
   programs.ghostty = {
     enable = true;
@@ -28,4 +28,5 @@
         "15=#bdae93"
       ];
     };
+  };
 }
