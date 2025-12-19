@@ -14,7 +14,10 @@
       bar = {
         density = "comfortable";
         position = "top";
-        showCapsule = false;
+        showCapsule = true; # Ativa "Show capsule" (fundo arredondado nos widgets)
+        showWidgetBackgrounds = true; # Ativa "Show widget backgrounds" (pelo nome na GUI; em algumas versões pode ser widgetBackgrounds ou similar – confirme nos defaults)
+        capsuleOpacity = 0.60; # Define "Capsule opacity" em 60% (valor entre 0.0 e 1.0)
+        floating = true;
         widgets = {
           left = [
             {
@@ -53,7 +56,7 @@
         };
       };
       dock = {
-        enable = false;
+        enabled = false;
       };
 
       general = {

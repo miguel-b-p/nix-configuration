@@ -5,6 +5,9 @@
     environmentVariables = {
       NH_FLAKE = "/home/mingas/nix-configuration";
     };
-    extraConfig = builtins.readFile ./fzf-config.nu;
+    extraConfig = ''
+      $env.config.show_banner = false
+    ''
+    + builtins.readFile ./fzf-config.nu;
   };
 }

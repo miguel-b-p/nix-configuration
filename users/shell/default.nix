@@ -8,7 +8,7 @@
 {
   imports = [
     ./bash.nix
-    ./nushell.nix
+    ./nushell
     ./oh-my-posh
   ];
 

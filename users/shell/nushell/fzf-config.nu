@@ -1,5 +1,5 @@
 $env.config = ($env.config | upsert keybindings (
-    ($env.config | get -i keybindings | default [])
+    ($env.config | get --optional keybindings | default [])
     | append {
         name: fzf_history
         modifier: control
