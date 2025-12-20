@@ -187,29 +187,7 @@ in
     x11.enable = true;
   };
 
-  xdg = {
-    enable = true; # Opcional, mas recomendado
-    mimeApps = {
-      enable = true;
-      defaultApplications = {
-        # Navegador padrão: Vivaldi para web e URLs
-        "text/html" = "vivaldi-stable.desktop";
-        "x-scheme-handler/http" = "vivaldi-stable.desktop";
-        "x-scheme-handler/https" = "vivaldi-stable.desktop";
-        "x-scheme-handler/about" = "vivaldi-stable.desktop";
-        "x-scheme-handler/unknown" = "vivaldi-stable.desktop";
-
-        # Explorador de arquivos: Nautilus para pastas
-        "inode/directory" = "org.gnome.Nautilus.desktop";
-
-        # Opcional: mais MIME comuns para reforçar
-        "application/x-gnome-saved-search" = "org.gnome.Nautilus.desktop";
-      };
-    };
-  };
-
   home.packages = with pkgs; [
-    nautilus
     xwayland-satellite
     adw-gtk3
     qt6Packages.qt6ct

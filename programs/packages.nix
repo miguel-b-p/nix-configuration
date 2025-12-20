@@ -24,6 +24,7 @@ in
 
       # Multimedia
       vlc
+      loupe
       obs-studio
       obs-studio-plugins.obs-move-transition
       obs-studio-plugins.obs-scene-as-transition
