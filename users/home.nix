@@ -19,6 +19,7 @@
   imports = [
     ./vscode.nix
     ./mangohud.nix
+    ./xdg-portal.nix
     ./nh.nix
     ./niri
     ./shell
