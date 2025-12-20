@@ -14,7 +14,6 @@
     ./hardware/drives
     ./networking
     ./localization
-    ./desktop/xdg-portal.nix
     ./services/audio.nix
     ./services/printing.nix
     ./services/flatpak.nix
@@ -32,6 +31,7 @@
     ./system/fonts.nix
     ./system/nixos.nix
     ./system/unbound.nix
+    ./system/xdg.nix
     ./virtualization
     ./users
     ./desktop/greetd.nix
