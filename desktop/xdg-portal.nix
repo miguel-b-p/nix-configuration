@@ -55,7 +55,7 @@
         "application/x-gzip" = "org.gnome.FileRoller.desktop";
 
         # Texto
-        "text/plain" = "org.gnome.TextEditor.desktop";
+        "text/plain" = "micro.desktop";
 
         # Opcional: mais MIME comuns para reforçar
         "application/x-gnome-saved-search" = "org.gnome.Nautilus.desktop";

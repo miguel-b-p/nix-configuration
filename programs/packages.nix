@@ -21,6 +21,10 @@ in
 
       # Development
       windsurf
+      micro
+
+      # Files
+      file-roller
 
       # Multimedia
       vlc
