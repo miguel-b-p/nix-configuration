@@ -78,4 +78,6 @@
     enable = true;
     algorithm = "zstd";
   };
+
+  systemd.coredump.enable = false;
 }
