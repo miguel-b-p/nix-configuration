@@ -9,7 +9,7 @@
     enable = true;
     packages = [
       "com.ranfdev.DistroShelf"
-      "io.github.kolunmi.Bazaar"
+      "io.github.N3kosempai.klia-store"
     ];
     update.auto = {
       enable = true;
