@@ -23,7 +23,6 @@
     ./nh.nix
     ./niri
     ./shell
-    ./kitty
     ./ghostty
   ];
 }

@@ -16,7 +16,7 @@
         position = "top";
         showCapsule = true; # Ativa "Show capsule" (fundo arredondado nos widgets)
         showWidgetBackgrounds = true; # Ativa "Show widget backgrounds" (pelo nome na GUI; em algumas versões pode ser widgetBackgrounds ou similar – confirme nos defaults)
-        capsuleOpacity = 0.60; # Define "Capsule opacity" em 60% (valor entre 0.0 e 1.0)
+        capsuleOpacity = 1.0; # Define "Capsule opacity" em 60% (valor entre 0.0 e 1.0)
         floating = true;
         widgets = {
           left = [
@@ -55,6 +55,18 @@
           ];
         };
       };
+      wallpaper = {
+        enableManagement = true; # "Enable wallpaper management"
+        enableOverviewWallpaper = false; # "Enable overview wallpaper" (blurred/dimmed)
+
+        folder = "/home/mingas/Pictures/Wallpapers"; # Pasta principal
+
+        selector = {
+          searchSubfolders = true; # "Search subfolders"
+          hideFilenames = true; # "Hide filenames"
+          position = "followBar"; # "Follow bar (default)" – valores possíveis: "followBar", "top", "bottom", etc.
+        };
+      };
       dock = {
         enabled = false;
       };
@@ -66,12 +78,7 @@
 
       location = {
         monthBeforeDay = true;
-        name = "São Paulo, Brazil";
-      };
-
-      wallpaper = {
-        path = "${./wallpapers/Kojiro.png}";
-        folder = "${./wallpapers}";
+        name = "Santa Adélia, Brazil";
       };
     };
   };

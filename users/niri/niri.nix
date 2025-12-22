@@ -59,8 +59,8 @@
         background-color = "transparent";
         focus-ring.enable = false;
         border = {
-          active.color = "#d4be98";
-          inactive.color = "#32302f";
+          active.color = "#c6c929ff";
+          inactive.color = "#7a7a15ff";
           enable = true;
           width = 2;
         };
