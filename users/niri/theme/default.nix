@@ -72,37 +72,38 @@ in
 
     # === CRÍTICO PARA GTK4/libadwaita ===
     # Symlink dos assets gtk-4.0 para o diretório de config
-    ".config/gtk-4.0/gtk.css".source = "${gtkTheme}/share/themes/${themeName}/gtk-4.0/gtk.css";
-    ".config/gtk-4.0/gtk-dark.css".source =
-      "${gtkTheme}/share/themes/${themeName}/gtk-4.0/gtk-dark.css";
+    ".config/gtk-4.0/gtk.css" = {
+      source = "${gtkTheme}/share/themes/${themeName}/gtk-4.0/gtk.css";
+      force = true;
+    };
+    ".config/gtk-4.0/gtk-dark.css" = {
+      source = "${gtkTheme}/share/themes/${themeName}/gtk-4.0/gtk-dark.css";
+      force = true;
+    };
 
     # Assets do tema GTK4 (se existirem)
     ".config/gtk-4.0/assets" = {
       source = "${gtkTheme}/share/themes/${themeName}/gtk-4.0/assets";
       recursive = true;
+      force = true;
     };
   };
 
-  # Variáveis de ambiente - usando o método correto
   home.sessionVariables = {
     GTK_THEME = themeName;
-    # NÃO sobrescreva XDG_DATA_DIRS completamente, use xdg.configFile ou packages
   };
 
-  # Adicione o tema aos pacotes para garantir que está no XDG_DATA_DIRS
   home.packages = with pkgs; [
     gtkTheme
-    gnome-themes-extra # Tema Adwaita como fallback
-    gtk3 # Engines GTK3
-    gtk4 # Para suporte GTK4
-    gsettings-desktop-schemas # Schemas GSettings
+    gnome-themes-extra
+    gtk3
+    gtk4
+    gsettings-desktop-schemas
   ];
 
-  # Configuração XDG para portais
   xdg = {
     enable = true;
 
-    # Garante que apps usem os schemas corretos
     systemDirs.data = [
       "${gtkTheme}/share"
       "${pkgs.gsettings-desktop-schemas}/share/gsettings-schemas/${pkgs.gsettings-desktop-schemas.name}"

@@ -25,7 +25,7 @@
     ./programs/warp-cloudflare.nix
     ./programs/warp-terminal
     ./programs/packages.nix
-    ./programs/thunar.nix
+    ./programs/file-manager.nix
     ./system/kernel.nix
     ./system/packages.nix
     ./system/fonts.nix
