@@ -219,15 +219,41 @@ dialog.xfsm-logout-dialog {
 
 		widget.view {
 			// padding: $space-size; // Not work ?
+			// Fix icon colors for light theme
+			color: $text;
+			-gtk-icon-style: symbolic;
+
+			image, cell {
+				color: $text;
+			}
 
 			&:selected {
 				@extend %selected_items;
+
+				image, cell {
+					color: on($primary);
+				}
 			}
 		}
 	}
 
 	scrolledwindow.frame.sidebar {
 		border-top: none;
+
+		// Fix sidebar icon colors
+		treeview.view {
+			color: $text;
+
+			image, cell {
+				color: $text;
+			}
+
+			&:selected {
+				image, cell {
+					color: on($primary);
+				}
+			}
+		}
 	}
 
 	// .sidebar .view:not(:selected) { background-color: transparent; }

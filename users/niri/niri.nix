@@ -51,10 +51,6 @@
         workspace-shadow.enable = false;
         backdrop-color = "transparent";
       };
-      cursor = {
-        size = 30;
-        theme = "everforest-cursors";
-      };
       layout = {
         background-color = "transparent";
         focus-ring.enable = false;

@@ -1,114 +1,111 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 let
   gtkTheme = pkgs.callPackage ./gruvbox-gtk-theme/package.nix {
     colorVariants = [ "light" ];
     themeVariants = [ "green" ];
     tweakVariants = [ "medium" ];
   };
+
+  themeName = "Gruvbox-Green-Light-Medium";
+  iconName = "Gruvbox-Plus-Dark";
+  cursorName = "everforest-cursors-light";
 in
 {
   gtk = {
     enable = true;
+
     theme = {
-      name = "Gruvbox-Green-Light-Medium";
+      name = themeName;
       package = gtkTheme;
     };
+
     iconTheme = {
-      name = "Gruvbox-Plus-Dark";
-      package = (
-        pkgs.gruvbox-plus-icons.override {
-          folder-color = "citron";
-        }
-      );
+      name = iconName;
+      package = pkgs.gruvbox-plus-icons.override {
+        folder-color = "citron";
+      };
     };
-    gtk3.extraConfig = {
-      gtk-application-prefer-light-theme = 1;
+
+    # Configurações extras GTK3
+    gtk3 = {
+      extraConfig = {
+        gtk-application-prefer-light-theme = 1;
+      };
+      # CSS customizado para GTK3 (opcional)
+      extraCss = '''';
     };
-    gtk4.extraConfig = {
-      gtk-application-prefer-light-theme = 1;
+
+    # Configurações extras GTK4
+    gtk4 = {
+      extraConfig = {
+        gtk-application-prefer-light-theme = 1;
+      };
+      # CSS customizado para GTK4 (opcional)
+      extraCss = '''';
     };
   };
 
-  dconf.settings = {
-    "org/gnome/desktop/interface" = {
-      color-scheme = "prefer-light";
-      gtk-theme = "Gruvbox-Green-Light-Medium";
-    };
-  };
-
-  # Link do tema para pasta local, permitindo que Flatpaks e apps GTK4 o encontrem via filesystem
-  home.file.".local/share/themes/Gruvbox-Green-Light-Medium".source =
-    "${gtkTheme}/share/themes/Gruvbox-Green-Light-Medium";
-  home.sessionVariables = {
-    GTK_THEME = "Gruvbox-Green-Light-Medium";
-    XDG_DATA_DIRS = "${gtkTheme}/share:$XDG_DATA_DIRS";
-    XDG_ICON_DIR = "${pkgs.gruvbox-plus-icons}/share/icons/Gruvbox-Plus-Dark";
-    GSETTINGS_SCHEMA_DIR = "${pkgs.gsettings-desktop-schemas}/share/gsettings-schemas/${pkgs.gsettings-desktop-schemas.name}/glib-2.0/schemas";
-  };
-
-  # home.file.".config/gtk-3.0/gtk.css".text = ''
-  #   /* Increase padding/margins globally where it makes sense */
-  #   button, entry, label, menuitem, treeview, notebook tab {
-  #     padding: 8px 12px;   /* Adjust vertical/horizontal as needed; default is often smaller */
-  #     margin: 4px;
-  #   }
-
-  #   /* More space in titlebars/headerbars (common complaint) */
-  #   headerbar {
-  #     padding: 6px 12px;
-  #     min-height: 48px;    /* Optional: taller bar for more space */
-  #   }
-
-  #   headerbar button, headerbar entry {
-  #     margin: 4px;
-  #     padding: 6px 10px;
-  #   }
-
-  #   /* Menus and popovers */
-  #   menu, popover {
-  #     padding: 6px;
-  #   }
-
-  #   menuitem {
-  #     padding: 8px 12px;
-  #   }
-
-  #   /* List/tree views (e.g., file managers, settings) */
-  #   row, cell {
-  #     padding: 6px;
-  #   }
-
-  #   /* Text entries and search bars */
-  #   entry {
-  #     padding: 8px 12px;
-  #   }
-
-  #   /* Adjust font rendering spacing if needed (rarely the core issue) */
-  #   * {
-  #     -GtkWidget-text-handle-width: 20px;  /* Example for text handles */
-  #   }
-  # '';
-
-  # home.file.".config/gtk-4.0/gtk.css".text = ''
-  #   /* Same or similar rules for GTK4/libadwaita apps */
-  #   /* Copy the above CSS here; GTK4 supports most of the same properties */
-  #   button, entry, label {
-  #     padding: 10px 14px;
-  #     margin: 6px;
-  #   }
-
-  #   headerbar {
-  #     padding: 8px 14px;
-  #   }
-
-  #   /* Add more as needed */
-  # '';
-
+  # Cursor unificado
   home.pointerCursor = {
     package = pkgs.everforest-cursors;
-    name = "everforest-cursors";
+    name = cursorName;
     size = 30;
     gtk.enable = true;
     x11.enable = true;
+  };
+
+  # dconf/GSettings - CRÍTICO para consistência
+  dconf.settings = {
+    "org/gnome/desktop/interface" = {
+      color-scheme = "prefer-light";
+      gtk-theme = themeName;
+      icon-theme = iconName;
+      cursor-theme = cursorName;
+      cursor-size = 30;
+    };
+  };
+
+  # Symlinks para garantir que apps encontrem o tema
+  home.file = {
+    # Tema em ~/.local/share/themes para apps e Flatpaks
+    ".local/share/themes/${themeName}".source = "${gtkTheme}/share/themes/${themeName}";
+
+    # === CRÍTICO PARA GTK4/libadwaita ===
+    # Symlink dos assets gtk-4.0 para o diretório de config
+    ".config/gtk-4.0/gtk.css".source = "${gtkTheme}/share/themes/${themeName}/gtk-4.0/gtk.css";
+    ".config/gtk-4.0/gtk-dark.css".source =
+      "${gtkTheme}/share/themes/${themeName}/gtk-4.0/gtk-dark.css";
+
+    # Assets do tema GTK4 (se existirem)
+    ".config/gtk-4.0/assets" = {
+      source = "${gtkTheme}/share/themes/${themeName}/gtk-4.0/assets";
+      recursive = true;
+    };
+  };
+
+  # Variáveis de ambiente - usando o método correto
+  home.sessionVariables = {
+    GTK_THEME = themeName;
+    # NÃO sobrescreva XDG_DATA_DIRS completamente, use xdg.configFile ou packages
+  };
+
+  # Adicione o tema aos pacotes para garantir que está no XDG_DATA_DIRS
+  home.packages = with pkgs; [
+    gtkTheme
+    gnome-themes-extra # Tema Adwaita como fallback
+    gtk3 # Engines GTK3
+    gtk4 # Para suporte GTK4
+    gsettings-desktop-schemas # Schemas GSettings
+  ];
+
+  # Configuração XDG para portais
+  xdg = {
+    enable = true;
+
+    # Garante que apps usem os schemas corretos
+    systemDirs.data = [
+      "${gtkTheme}/share"
+      "${pkgs.gsettings-desktop-schemas}/share/gsettings-schemas/${pkgs.gsettings-desktop-schemas.name}"
+    ];
   };
 }
