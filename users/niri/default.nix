@@ -10,8 +10,8 @@
     ./rules.nix
     ./binds.nix
     ./noctalia.nix
-    ./theme.nix
     ./niri.nix
+    ./theme
   ];
 
   home.packages = with pkgs; [

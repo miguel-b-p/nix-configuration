@@ -10,6 +10,9 @@
       dejavu_fonts
       nerd-fonts.jetbrains-mono
       noto-fonts-color-emoji
+      # Adicione estes pacotes para suporte a Japonês/CJK
+      noto-fonts-cjk-sans
+      noto-fonts-cjk-serif
     ];
 
     fontconfig = {
@@ -25,9 +28,19 @@
         rgba = "rgb";
       };
       defaultFonts = {
-        sansSerif = [ "DejaVu Sans" ];
-        serif = [ "DejaVu Serif" ];
-        monospace = [ "JetBrainsMono Nerd Font" ];
+        # Adicione "Noto Sans CJK JP" como fallback
+        sansSerif = [
+          "DejaVu Sans"
+          "Noto Sans CJK JP"
+        ];
+        serif = [
+          "DejaVu Serif"
+          "Noto Serif CJK JP"
+        ];
+        monospace = [
+          "JetBrainsMono Nerd Font"
+          "Noto Sans Mono CJK JP"
+        ];
         emoji = [ "Noto Color Emoji" ];
       };
 

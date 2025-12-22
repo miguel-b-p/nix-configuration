@@ -16,9 +16,6 @@ in
       })
       chromium
 
-      # Communication
-      vesktop
-
       # Development
       windsurf
       micro

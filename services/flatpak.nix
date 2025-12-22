@@ -10,6 +10,7 @@
     packages = [
       "com.ranfdev.DistroShelf"
       "io.github.N3kosempai.klia-store"
+      "org.equicord.equibop"
     ];
     update.auto = {
       enable = true;

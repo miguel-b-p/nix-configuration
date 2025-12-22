@@ -1,17 +1,18 @@
 { config, pkgs, ... }:
 
 {
-
   environment.systemPackages = with pkgs; [
     pciutils
     radeontop
   ];
+
   environment.sessionVariables = {
     MESA_SHADER_CACHE_MAX_SIZE = "12G";
     AMD_VULKAN_ICD = "RADV";
     RADV_PERFTEST = "nggc";
     # RADV_FORCE_VRS = "2x2";
   };
+
   boot.kernelParams = [
     "amdgpu.ppfeaturemask=0xffffffff"
     "amdgpu.dcdebugmask=0x10"
@@ -24,9 +25,19 @@
       enable = true;
       enable32Bit = true;
       package = pkgs.mesa;
+
+      extraPackages = with pkgs; [
+        # vaapiVdpau
+        # libvdpau-va-gl
+      ];
+
+      extraPackages32 = with pkgs.pkgsi686Linux; [
+        libva
+      ];
     };
 
     amdgpu.opencl.enable = true;
+
     firmware = [ pkgs.linux-firmware ];
   };
 
@@ -46,6 +57,6 @@
       };
     in
     [
-      "L+    /opt/rocm   -    -    -     -    ${rocmEnv}"
+      "L+ /opt/rocm - - - - ${rocmEnv}"
     ];
 }

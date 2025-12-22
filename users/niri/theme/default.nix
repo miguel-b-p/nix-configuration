@@ -1,13 +1,12 @@
 { pkgs, ... }:
 let
-  gtkTheme = pkgs.gruvbox-gtk-theme.override {
+  gtkTheme = pkgs.callPackage ./gruvbox-gtk-theme/package.nix {
     colorVariants = [ "light" ];
     themeVariants = [ "green" ];
     tweakVariants = [ "medium" ];
   };
 in
 {
-  # Deixa o GTK3 usando adw-gtk3 de forma declarativa (evita precisar do nwg-look)
   gtk = {
     enable = true;
     theme = {
