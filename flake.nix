@@ -12,9 +12,7 @@
       url = "github:jacopone/antigravity-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    preload-ng = {
-      url = "github:miguel-b-p/preload-ng";
-    };
+    preload-ng.url = "/home/mingas/projetos/preload-ng";
     llm-agents.url = "github:numtide/llm-agents.nix";
     noctalia.url = "github:noctalia-dev/noctalia-shell";
     niri.url = "github:sodiboo/niri-flake";

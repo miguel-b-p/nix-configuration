@@ -60,7 +60,7 @@
       };
 
       general = {
-        avatarImage = "/home/mingas/.face";
+        avatarImage = "/home/mingas/face.jpg";
         radiusRatio = 0.2;
       };
 
