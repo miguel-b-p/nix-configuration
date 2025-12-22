@@ -36,20 +36,6 @@
         {
           command = [ "${pkgs.xdg-desktop-portal-gnome}/libexec/xdg-desktop-portal-gnome" ];
         }
-        {
-          command = [
-            "qs"
-            "-c"
-            "noctalia-shell"
-            "ipc"
-            "call"
-            "wallpaper"
-            "set"
-            "/home/mingas/Pictures/wall/Kojiro.png"
-            "HDMI-A-1"
-          ];
-        }
-
       ];
       outputs = {
         "HDMI-A-1" = {

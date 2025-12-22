@@ -15,7 +15,7 @@ in
       package = gtkTheme;
     };
     iconTheme = {
-      name = "Gruvbox-Plus-Light";
+      name = "Gruvbox-Plus-Dark";
       package = (
         pkgs.gruvbox-plus-icons.override {
           folder-color = "caramel";
@@ -43,7 +43,7 @@ in
   home.sessionVariables = {
     GTK_THEME = "Gruvbox-Yellow-Light-Medium";
     XDG_DATA_DIRS = "${gtkTheme}/share:$XDG_DATA_DIRS";
-    XDG_ICON_DIR = "${pkgs.gruvbox-plus-icons}/share/icons/Gruvbox-Plus-Light";
+    XDG_ICON_DIR = "${pkgs.gruvbox-plus-icons}/share/icons/Gruvbox-Plus-Dark";
     GSETTINGS_SCHEMA_DIR = "${pkgs.gsettings-desktop-schemas}/share/gsettings-schemas/${pkgs.gsettings-desktop-schemas.name}/glib-2.0/schemas";
   };
 

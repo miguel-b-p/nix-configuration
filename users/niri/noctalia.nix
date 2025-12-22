@@ -7,7 +7,7 @@
       colorSchemes = {
         useWallpaperColors = false; # Desliga cores do wallpaper para usar predefined
         predefinedScheme = "Gruvbox"; # Aqui o nome exato do tema (capital G maiúsculo)
-        darkMode = true; # Ou false se quiser light, mas Gruvbox é dark
+        darkMode = false; # Ou false se quiser light, mas Gruvbox é dark
         # schedulingMode = "off";  # Opcional, se não quiser schedule automático
         generateTemplatesForPredefined = false; # Opcional, para aplicar em apps como GTK/Qt
       };
@@ -67,6 +67,11 @@
       location = {
         monthBeforeDay = true;
         name = "São Paulo, Brazil";
+      };
+
+      wallpaper = {
+        path = "${./wallpapers/Kojiro.png}";
+        folder = "${./wallpapers}";
       };
     };
   };
