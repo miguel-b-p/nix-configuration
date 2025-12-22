@@ -70,7 +70,7 @@ lib.checkListOfEnum "${pname}: colorVariants" colorVariantList colorVariants lib
     inherit pname;
     version = "0-unstable-2025-10-23";
 
-    src = ./Gruvbox-GTK-Theme;
+    src = ./src;
 
     propagatedUserEnvPkgs = [ gtk-engine-murrine ];
 
