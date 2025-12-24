@@ -13,7 +13,7 @@
       flakeInputs = lib.filterAttrs (_: v: lib.isType "flake" v) inputs;
     in
     {
-      package = pkgs.lixPackageSets.latest.lix;
+      # package = pkgs.lixPackageSets.latest.lix;
 
       registry = lib.mapAttrs (_: v: { flake = v; }) flakeInputs;
 
@@ -36,7 +36,7 @@
 
         substituters = [
           "https://cache.nixos.org"
-          "https://cache.lix.systems"
+          # "https://cache.lix.systems"
           "https://chaotic-nyx.cachix.org"
           "https://fufexan.cachix.org"
           "https://linuxmobile.cachix.org"
@@ -47,7 +47,7 @@
         ];
         trusted-public-keys = [
           "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
-          "cache.lix.systems:aBnZUw8zA7H35Cz2RyTxOh0c5d6+8k2G39g841+s0yE="
+          # "cache.lix.systems:aBnZUw8zA7H35Cz2RyTxOh0c5d6+8k2G39g841+s0yE="
           "chaotic-nyx.cachix.org-1:HfnXSw4pj95iI/n17rIDy40agHj12WfF+Gqk6SonIT8="
           "fufexan.cachix.org-1:LwCDjCJNJQf5XD2BV+yamQIMZfcKWR9ISIFy5curUsY="
           "linuxmobile.cachix.org-1:2K7KEjzbd3U+qMQRte/DGqttosw8EGgGVvu8vKu8D6A="

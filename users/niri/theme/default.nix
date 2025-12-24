@@ -1,8 +1,12 @@
 { pkgs, config, ... }:
 let
-  gtkTheme = pkgs.callPackage ./archcraft-gruv/package.nix { };
+  gtkTheme = pkgs.callPackage ./gruvbox-gtk-theme/package.nix {
+    colorVariants = [ "light" ];
+    themeVariants = [ "green" ];
+    tweakVariants = [ "medium" ];
+  };
 
-  themeName = "Gruvbox-Light";
+  themeName = "Gruvbox-Green-Light-Medium";
   iconName = "Gruvbox-Plus-Dark";
   cursorName = "everforest-cursors-light";
 in
