@@ -11,7 +11,7 @@
     ./binds.nix
     ./noctalia.nix
     ./niri.nix
-    ./theme
+    ./theme.nix
   ];
 
   home.packages = with pkgs; [
