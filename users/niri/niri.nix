@@ -1,4 +1,9 @@
-{ pkgs, ... }:
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}:
 {
   programs.niri = {
     enable = true;
@@ -14,6 +19,7 @@
         QT_QPA_PLATFORMTHEME = "qt6ct";
         GTK_IM_MODULE = "simple";
       };
+
       input = {
         keyboard = {
           xkb = {
@@ -47,6 +53,10 @@
           };
         };
       };
+      cursor = {
+        theme = "graphite-dark";
+        size = 25;
+      };
       # Styling configuration
       overview = {
         workspace-shadow.enable = false;
@@ -56,8 +66,6 @@
         background-color = "transparent";
         focus-ring.enable = false;
         border = {
-          active.color = "#c6c929ff";
-          inactive.color = "#7a7a15ff";
           enable = true;
           width = 2;
         };

@@ -24,5 +24,6 @@
     ./niri
     ./shell
     ./ghostty
+    inputs.dms.homeModules.dankMaterialShell.default
   ];
 }

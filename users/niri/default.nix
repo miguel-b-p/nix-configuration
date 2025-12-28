@@ -9,7 +9,8 @@
   imports = [
     ./rules.nix
     ./binds.nix
-    ./noctalia.nix
+    # ./noctalia.nix
+    ./dms.nix
     ./niri.nix
     ./theme.nix
   ];

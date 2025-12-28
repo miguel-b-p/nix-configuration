@@ -45,20 +45,6 @@
       matches = [
         { is-window-cast-target = true; }
       ];
-      focus-ring = {
-        active.color = "#0d5ba5";
-        inactive.color = "#204c78";
-      };
-      border = {
-        inactive.color = "#204c78";
-      };
-      shadow = {
-        color = "#204c7870";
-      };
-      tab-indicator = {
-        active.color = "#0d5ba5";
-        inactive.color = "#204c78";
-      };
     }
     {
       matches = [ { app-id = "org.telegram.desktop"; } ];

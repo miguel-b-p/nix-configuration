@@ -14,7 +14,8 @@
     };
     preload-ng.url = "/home/mingas/projetos/preload-ng";
     llm-agents.url = "github:numtide/llm-agents.nix";
-    noctalia.url = "github:noctalia-dev/noctalia-shell";
+    # noctalia.url = "github:noctalia-dev/noctalia-shell";
+    dms.url = "github:AvengeMedia/DankMaterialShell";
     niri.url = "github:sodiboo/niri-flake";
   };
 
@@ -29,7 +30,8 @@
       antigravity-nix,
       preload-ng,
       llm-agents,
-      noctalia,
+      # noctalia,
+      dms,
       niri,
       ...
     }@inputs:
@@ -53,7 +55,7 @@
             {
               home-manager.sharedModules = [
                 niri.homeModules.niri
-                noctalia.homeModules.default
+                # noctalia.homeModules.default
               ];
             }
           ];

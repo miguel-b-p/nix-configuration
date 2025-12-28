@@ -5,11 +5,20 @@
 
     settings = {
       colorSchemes = {
-        useWallpaperColors = false; # Desliga cores do wallpaper para usar predefined
-        predefinedScheme = "Gruvbox"; # Aqui o nome exato do tema (capital G maiúsculo)
-        darkMode = false; # Ou false se quiser light, mas Gruvbox é dark
+        useWallpaperColors = true; # Desliga cores do wallpaper para usar predefined
+        # predefinedScheme = "Gruvbox"; # Aqui o nome exato do tema (capital G maiúsculo)
+        predefinedScheme = "Noctalia (default)";
+        darkMode = true; # Ou false se quiser light, mas Gruvbox é dark
         # schedulingMode = "off";  # Opcional, se não quiser schedule automático
-        generateTemplatesForPredefined = false; # Opcional, para aplicar em apps como GTK/Qt
+        generateTemplatesForPredefined = true; # Opcional, para aplicar em apps como GTK/Qt
+        matugenSchemeType = "Neutral";
+      };
+      templates = {
+        gtk = true;
+        qt = true;
+        kcolorscheme = true;
+        niri = true;
+        ghostty = true;
       };
       bar = {
         density = "comfortable";
@@ -83,6 +92,5 @@
     };
   };
 
-  # Preferível: só UM lugar habilita o serviço (você já está usando HM, então ok)
   programs.noctalia-shell.systemd.enable = true;
 }

@@ -64,4 +64,5 @@
         options = "--delete-older-than 14d";
       };
     };
+  systemd.user.services.niri-flake-polkit.enable = false;
 }
