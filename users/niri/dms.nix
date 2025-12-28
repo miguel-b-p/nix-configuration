@@ -7,4 +7,5 @@
       enableSpawn = true; # Auto-start DMS with niri and cliphist, if enabled
     };
   };
+
 }
