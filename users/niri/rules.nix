@@ -2,6 +2,26 @@
 {
   programs.niri.settings.window-rules = [
     {
+      matches = [
+        { app-id = "Discovery-d.exe"; }
+        { app-id = "cs2"; }
+      ];
+      open-fullscreen = true;
+      block-out-from = "screen-capture";
+      shadow.enable = false;
+
+      # Performance optimizations
+      opacity = 1.0;
+      geometry-corner-radius = {
+        top-left = 0.0;
+        top-right = 0.0;
+        bottom-left = 0.0;
+        bottom-right = 0.0;
+      };
+      clip-to-geometry = false;
+      variable-refresh-rate = true;
+    }
+    {
       geometry-corner-radius =
         let
           radius = 12.0;

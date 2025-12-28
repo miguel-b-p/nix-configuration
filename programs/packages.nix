@@ -16,6 +16,9 @@ in
       })
       chromium
 
+      # chat
+      equicord
+
       # Development
       windsurf
       micro

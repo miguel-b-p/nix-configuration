@@ -6,13 +6,13 @@
 }:
 
 {
-  services.haveged.enable = true;
+  # services.haveged.enable = true;
 
-  services.bpftune.enable = true;
+  # services.bpftune.enable = true;
 
   services.preload-ng = {
     enable = true;
-    debug = true;
+    debug = false;
     usePrecompiled = false;
     settings = {
       # Faster cycles for NVMe responsiveness
@@ -40,14 +40,12 @@
       mapPrefix = "/nix/store/;/run/current-system/;/home/mingas/.local/share/;!/";
       exePrefix = "/nix/store/;/run/current-system/;/home/mingas/.local/share/;!/";
 
-      # predictionAlgorithm = "VOMM";
+      predictionAlgorithm = "VOMM";
     };
   };
 
-  services.power-profiles-daemon.enable = false;
+  powerManagement.cpuFreqGovernor = "performance";
   services = {
-    system76-scheduler.settings.processScheduler.enable = true;
-    system76-scheduler.settings.cfsProfiles.enable = true;
     ananicy = with pkgs; {
       enable = true;
       package = ananicy-cpp;
@@ -56,8 +54,11 @@
 
     scx = {
       enable = true;
-      scheduler = "scx_lavd";
-      extraArgs = [ "--performance" ];
+      scheduler = "scx_rusty";
+      extraArgs = [
+        "--perf"
+        "1024"
+      ];
     };
 
     irqbalance.enable = true;
@@ -69,7 +70,7 @@
       extraArgs = [
         "-g"
         "--avoid"
-        "'^(X|plasma.*|konsole|kwin|wayland|gnome.*)$'"
+        "'^(niri|xwayland-satellite|Xwayland|X|wayland|.+-portal-.+)$'"
       ];
     };
   };

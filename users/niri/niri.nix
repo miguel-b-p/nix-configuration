@@ -39,6 +39,7 @@
       ];
       outputs = {
         "HDMI-A-1" = {
+          variable-refresh-rate = false;
           mode = {
             width = 1920;
             height = 1080;

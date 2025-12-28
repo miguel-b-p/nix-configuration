@@ -30,7 +30,7 @@
     ./system/packages.nix
     ./system/fonts.nix
     ./system/nixos.nix
-    ./system/unbound.nix
+    # ./system/unbound.nix
     ./system/xdg.nix
     ./virtualization
     ./users

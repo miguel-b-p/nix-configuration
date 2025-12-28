@@ -1,6 +1,6 @@
 {
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs?ref=nixpkgs-unstable";
     nix-flatpak.url = "github:gmodena/nix-flatpak";
     home-manager = {
       url = "https://github.com/nix-community/home-manager/archive/master.tar.gz";
