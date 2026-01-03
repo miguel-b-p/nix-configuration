@@ -10,7 +10,6 @@
       block-out-from = "screen-capture";
       shadow.enable = false;
 
-      # Performance optimizations
       opacity = 1.0;
       geometry-corner-radius = {
         top-left = 0.0;
@@ -98,7 +97,6 @@
         relative-to = "bottom-right";
       };
     }
-    # Floating dialogs and utilities
     {
       matches = [ { app-id = "pavucontrol"; } ];
       open-floating = true;
@@ -159,7 +157,6 @@
       matches = [ { app-id = "pinentry"; } ];
       open-floating = true;
     }
-    # Floating by title
     {
       matches = [ { title = "Progress"; } ];
       open-floating = true;

@@ -1,150 +1,152 @@
 { ... }:
 {
   programs.niri.settings.binds = {
-    # Media keys
     "XF86AudioPlay" = {
       allow-when-locked = true;
       action.spawn = [
-        "noctalia-shell"
+        "dms"
         "ipc"
         "call"
-        "media"
+        "mpris"
         "playPause"
       ];
     };
     "XF86AudioStop" = {
       allow-when-locked = true;
       action.spawn = [
-        "noctalia-shell"
+        "dms"
         "ipc"
         "call"
-        "media"
+        "mpris"
         "stop"
       ];
     };
     "XF86AudioNext" = {
       allow-when-locked = true;
       action.spawn = [
-        "noctalia-shell"
+        "dms"
         "ipc"
         "call"
-        "media"
+        "mpris"
         "next"
       ];
     };
     "XF86AudioPrev" = {
       allow-when-locked = true;
       action.spawn = [
-        "noctalia-shell"
+        "dms"
         "ipc"
         "call"
-        "media"
+        "mpris"
         "previous"
       ];
     };
 
-    # Volume keys
     "XF86AudioMute" = {
       allow-when-locked = true;
       action.spawn = [
-        "noctalia-shell"
+        "dms"
         "ipc"
         "call"
-        "volume"
-        "muteOutput"
+        "audio"
+        "mute"
       ];
     };
     "XF86AudioMicMute" = {
       allow-when-locked = true;
       action.spawn = [
-        "noctalia-shell"
+        "dms"
         "ipc"
         "call"
-        "volume"
-        "muteInput"
+        "audio"
+        "micmute"
       ];
     };
     "XF86AudioRaiseVolume" = {
       allow-when-locked = true;
       action.spawn = [
-        "noctalia-shell"
+        "dms"
         "ipc"
         "call"
-        "volume"
-        "increase"
+        "audio"
+        "increment"
+        "5"
       ];
     };
     "XF86AudioLowerVolume" = {
       allow-when-locked = true;
       action.spawn = [
-        "noctalia-shell"
+        "dms"
         "ipc"
         "call"
-        "volume"
-        "decrease"
+        "audio"
+        "decrement"
+        "5"
       ];
     };
 
-    # Brightness keys
     "XF86MonBrightnessUp" = {
       allow-when-locked = true;
       action.spawn = [
-        "noctalia-shell"
+        "dms"
         "ipc"
         "call"
         "brightness"
-        "increase"
+        "increment"
+        "5"
+        ""
       ];
     };
     "XF86MonBrightnessDown" = {
       allow-when-locked = true;
       action.spawn = [
-        "noctalia-shell"
+        "dms"
         "ipc"
         "call"
         "brightness"
-        "decrease"
+        "decrement"
+        "5"
+        ""
       ];
     };
 
-    # System actions
     "Ctrl+Alt+L".action.spawn = [
-      "noctalia-shell"
+      "dms"
       "ipc"
       "call"
-      "lockScreen"
+      "lock"
       "lock"
     ];
     "Mod+V".action.spawn = [
-      "noctalia-shell"
+      "dms"
       "ipc"
       "call"
-      "launcher"
       "clipboard"
+      "toggle"
     ];
     "Mod+E".action.spawn = [
-      "noctalia-shell"
+      "dms"
       "ipc"
       "call"
-      "launcher"
-      "emoji"
+      "spotlight"
+      "toggleQuery"
+      ":"
     ];
     "Mod+U".action.spawn = [
-      "noctalia-shell"
+      "dms"
       "ipc"
       "call"
       "settings"
       "toggle"
     ];
     "Alt+Space".action.spawn = [
-      "noctalia-shell"
+      "dms"
       "ipc"
       "call"
-      "launcher"
+      "spotlight"
       "toggle"
     ];
 
-    # Screenshots
     "Print".action.screenshot-screen = {
       write-to-disk = true;
     };
@@ -153,11 +155,8 @@
       show-pointer = false;
     };
 
-    # Terminal
-    "Mod+K".action.spawn = "kitty";
     "Mod+G".action.spawn = "ghostty";
 
-    # Window management
     "Mod+Q".action.close-window = [ ];
     "Mod+S".action.switch-preset-column-width = [ ];
     "Mod+F".action.maximize-column = [ ];
@@ -174,19 +173,16 @@
     "Mod+Tab".action.switch-focus-between-floating-and-tiling = [ ];
     "Mod+Shift+Space".action.fullscreen-window = [ ];
 
-    # Resize
     "Mod+Alt+Left".action.set-column-width = "-10%";
     "Mod+Alt+Right".action.set-column-width = "+10%";
     "Mod+Alt+Up".action.set-window-height = "-10%";
     "Mod+Alt+Down".action.set-window-height = "+10%";
 
-    # Focus navigation
     "Mod+Left".action.focus-column-left = [ ];
     "Mod+Right".action.focus-column-right = [ ];
     "Mod+Down".action.focus-workspace-down = [ ];
     "Mod+Up".action.focus-workspace-up = [ ];
 
-    # Move columns
     "Mod+Shift+Left".action.move-column-left = [ ];
     "Mod+Shift+Right".action.move-column-right = [ ];
     "Mod+Shift+Up".action.move-column-to-workspace-up = [ ];

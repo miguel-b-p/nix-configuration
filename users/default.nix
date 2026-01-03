@@ -27,7 +27,6 @@
       "disk"
       "input"
     ];
-    # Subuid and subgid ranges for user namespaces, fixes distrobox
     subUidRanges = [
       {
         startUid = 100000;
@@ -41,7 +40,6 @@
       }
     ];
     ignoreShellProgramCheck = true;
-    # shell = pkgs.fish; # Configured in shell/fish.nix
     shell = pkgs.nushell;
   };
   users.defaultUserShell = pkgs.nushell;
@@ -51,6 +49,6 @@
     useGlobalPkgs = false;
     useUserPackages = true;
     backupFileExtension = "backup";
-    users.mingas = import ./home.nix; # Aponta para o novo arquivo
+    users.mingas = import ./home.nix;
   };
 }

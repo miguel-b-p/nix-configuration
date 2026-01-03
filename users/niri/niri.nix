@@ -2,13 +2,18 @@
   pkgs,
   lib,
   config,
+  inputs,
   ...
 }:
 {
+  nixpkgs.overlays = [ inputs.niri.overlays.niri ];
   programs.niri = {
     enable = true;
+    package = pkgs.niri-unstable;
     settings = {
       environment = {
+        QT_QPA_PLATFORMTHEME = "gtk3";
+        QT_QPA_PLATFORMTHEME_QT6 = "gtk3";
         CLUTTER_BACKEND = "wayland";
         NIXOS_OZONE_WL = "1";
         QT_QPA_PLATFORM = "wayland;xcb";
@@ -16,7 +21,6 @@
         SDL_VIDEODRIVER = "wayland";
         WLR_RENDERER = "vulkan";
         WLR_NO_HARDWARE_CURSORS = "1";
-        QT_QPA_PLATFORMTHEME = "qt6ct";
         GTK_IM_MODULE = "simple";
       };
 
@@ -27,12 +31,12 @@
             variant = "abnt2";
             options = "srvrkeys:none";
           };
-          repeat-delay = 270; # Tempo até começar a repetir (ms)
-          repeat-rate = 50; # Repetições por segundo
+          repeat-delay = 270;
+          repeat-rate = 50;
         };
         mouse = {
-          accel-profile = "flat"; # Desativa aceleração
-          accel-speed = -0.1; # Velocidade mais lenta (-1.0 a 1.0)
+          accel-profile = "flat";
+          accel-speed = -0.1;
         };
       };
       spawn-at-startup = [
@@ -57,7 +61,6 @@
         theme = "graphite-dark";
         size = 25;
       };
-      # Styling configuration
       overview = {
         workspace-shadow.enable = false;
         backdrop-color = "transparent";
@@ -82,7 +85,7 @@
           proportion = 0.5;
         };
         always-center-single-column = true;
-        gaps = 6;
+        gaps = 7;
         struts = {
           left = 0;
           right = 0;
@@ -103,13 +106,6 @@
 
       prefer-no-csd = true;
       hotkey-overlay.skip-at-startup = true;
-
-      layer-rules = [
-        {
-          matches = [ { namespace = "^noctalia-wallpaper*"; } ];
-          place-within-backdrop = true;
-        }
-      ];
     };
   };
 }

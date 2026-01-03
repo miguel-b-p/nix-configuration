@@ -1,7 +1,7 @@
 { pkgs, config, ... }:
 let
   gtkTheme = pkgs.adw-gtk3;
-  themeName = "adw-gtk3";
+  themeName = "Adwaita-dark";
   iconName = "Arashi";
   cursorName = "graphite-dark";
 in
@@ -23,14 +23,14 @@ in
       extraConfig = {
         gtk-application-prefer-dark-theme = 1;
       };
-      extraCss = '''';
+      # extraCss = '''';
     };
 
     gtk4 = {
       extraConfig = {
         gtk-application-prefer-dark-theme = 1;
       };
-      extraCss = '''';
+      # extraCss = '''';
     };
   };
 

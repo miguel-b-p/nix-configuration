@@ -9,14 +9,13 @@
   imports = [
     ./rules.nix
     ./binds.nix
-    # ./noctalia.nix
     ./dms.nix
     ./niri.nix
     ./theme.nix
   ];
 
   home.packages = with pkgs; [
-    quickshell
+    # quickshell
     xwayland-satellite
     adw-gtk3
     qt6Packages.qt6ct

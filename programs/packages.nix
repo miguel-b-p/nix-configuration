@@ -8,16 +8,13 @@ in
     with llm-agents-pkgs;
     [
       # Productivity
-      anytype
+      # anytype
 
       # Browsers
       (vivaldi.override {
         commandLineArgs = "--password-store=basic";
       })
       chromium
-
-      # chat
-      equicord
 
       # Development
       windsurf

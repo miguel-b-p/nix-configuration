@@ -24,7 +24,7 @@
     graphics = {
       enable = true;
       enable32Bit = true;
-      package = pkgs.mesa_git;
+      package = pkgs.mesa;
 
       extraPackages = with pkgs; [
         # vaapiVdpau
