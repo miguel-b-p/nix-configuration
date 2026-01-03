@@ -1,7 +1,7 @@
 { pkgs, config, ... }:
 let
   gtkTheme = pkgs.adw-gtk3;
-  themeName = "Adwaita-dark";
+  themeName = "adw-gtk3-dark";
   iconName = "Arashi";
   cursorName = "graphite-dark";
 in
