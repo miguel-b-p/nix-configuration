@@ -69,10 +69,10 @@
           "type": "root"
         },
         {
-          "background": "p:surface",
-          "foreground": "p:on_surface",
+          "background": "p:inverse_surface",
+          "foreground": "p:inverse_on_surface",
           "style": "plain",
-          "template": " {{ if .WSL }}\uebcc {{ end }}{{.Icon}}",
+          "template": " {{ if .WSL }}\uebcc {{ end }}{{ if .Env.CONTAINER_ID }}{{ if contains \"fedora\" .Env.CONTAINER_ID }}\uf30a{{ else if contains \"ubuntu\" .Env.CONTAINER_ID }}\uf31b{{ else if contains \"arch\" .Env.CONTAINER_ID }}\uf303{{ else if contains \"debian\" .Env.CONTAINER_ID }}\uf306{{ else if contains \"opensuse\" .Env.CONTAINER_ID }}\uf314{{ else if contains \"alpine\" .Env.CONTAINER_ID }}\uf300{{ else if contains \"manjaro\" .Env.CONTAINER_ID }}\uf312{{ else if contains \"centos\" .Env.CONTAINER_ID }}\uf304{{ else if contains \"kali\" .Env.CONTAINER_ID }}\uf327{{ else }}\uf17c{{ end }}{{ else }}{{ .Icon }}{{ end }}  ",
           "type": "os"
         },
         {
@@ -162,7 +162,7 @@
         {
           "foreground": "p:primary",
           "style": "plain",
-          "template": "~> ",
+          "template": " ~> ",
           "type": "shell"
         }
       ],
