@@ -30,6 +30,7 @@
     ./system/packages.nix
     ./system/fonts.nix
     ./system/nixos.nix
+    ./system/maccel.nix
     # ./system/unbound.nix
     ./system/xdg.nix
     ./virtualization
