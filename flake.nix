@@ -35,6 +35,7 @@
       llm-agents,
       dms,
       niri,
+      maccel,
       ...
     }@inputs:
     {
