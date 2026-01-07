@@ -43,6 +43,7 @@
     shell = pkgs.nushell;
   };
   users.defaultUserShell = pkgs.nushell;
+  users.groups.docker = { };
 
   home-manager = {
     extraSpecialArgs = { inherit inputs; };

@@ -19,6 +19,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     niri.url = "github:sodiboo/niri-flake";
+    maccel.url = "github:Gnarus-G/maccel";
   };
 
   outputs =
@@ -46,6 +47,7 @@
             chaotic.nixosModules.default
             nix-flatpak.nixosModules.nix-flatpak
             preload-ng.nixosModules.default
+            maccel.nixosModules.default
             {
               environment.systemPackages = [
                 flox.packages.x86_64-linux.default
