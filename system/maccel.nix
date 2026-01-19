@@ -7,11 +7,11 @@
     enable = true;
     enableCli = true;
     parameters = {
-      mode = "linear";
+      mode = "no_accel";
+      yxRatio = 1.0;
+      inputDpi = 1100.0;
+      angleRotation = 4.0;
       sensMultiplier = 1.0;
-      acceleration = 0.3;
-      offset = 2.0;
-      outputCap = 2.0;
     };
   };
 }

@@ -1,7 +1,12 @@
 { config, pkgs, ... }:
 
 {
+  services.qemuGuest.enable = true;
+  programs.virt-manager.enable = true;
+
   virtualisation = {
+    spiceUSBRedirection.enable = true;
+    libvirtd.enable = true;
     containers.enable = true;
     podman = {
       enable = true;
@@ -19,5 +24,6 @@
       '';
     }))
     podman-compose
+    qemu
   ];
 }

@@ -42,6 +42,7 @@
     ignoreShellProgramCheck = true;
     shell = pkgs.nushell;
   };
+
   users.defaultUserShell = pkgs.nushell;
   users.groups.docker = { };
 

@@ -47,16 +47,6 @@
           command = [ "${pkgs.xdg-desktop-portal-gnome}/libexec/xdg-desktop-portal-gnome" ];
         }
       ];
-      outputs = {
-        "HDMI-A-1" = {
-          variable-refresh-rate = false;
-          mode = {
-            width = 1920;
-            height = 1080;
-            refresh = 100.0;
-          };
-        };
-      };
       cursor = {
         theme = "graphite-dark";
         size = 25;

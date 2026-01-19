@@ -19,6 +19,7 @@
     usbutils
     pciutils
     wl-clipboard
+    icu
   ];
 
   programs.ydotool.enable = true;

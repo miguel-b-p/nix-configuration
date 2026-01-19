@@ -12,7 +12,7 @@
 
   services.preload-ng = {
     enable = true;
-    debug = false;
+    debug = true;
     usePrecompiled = false;
     settings = {
       # Faster cycles for NVMe responsiveness

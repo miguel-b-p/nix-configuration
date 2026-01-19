@@ -13,6 +13,7 @@
         "colors"
         "layout"
         "wpblur"
+        "outputs"
       ];
     };
     systemd = {
