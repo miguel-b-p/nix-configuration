@@ -136,8 +136,14 @@
 
     # Configurações de firewall
     firewall = {
-      allowedTCPPorts = [ 53 ];
-      allowedUDPPorts = [ 53 ];
+      allowedTCPPorts = [
+        53
+        5678
+      ];
+      allowedUDPPorts = [
+        53
+        5678
+      ];
     };
   };
 
