@@ -8,6 +8,10 @@
     spiceUSBRedirection.enable = true;
     libvirtd.enable = true;
     containers.enable = true;
+    containers.registries.search = [
+      "docker.io"
+      "quay.io"
+    ];
     podman = {
       enable = true;
       dockerCompat = true;

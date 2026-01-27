@@ -139,10 +139,14 @@
       allowedTCPPorts = [
         53
         5678
+        5679
+        11434
       ];
       allowedUDPPorts = [
         53
         5678
+        5679
+        11434
       ];
     };
   };
