@@ -10,39 +10,39 @@
 
   # services.bpftune.enable = true;
 
-  services.preload-ng = {
-    enable = true;
-    debug = true;
-    usePrecompiled = true;
-    settings = {
-      # Faster cycles for NVMe responsiveness
-      cycle = 15;
+  # services.preload-ng = {
+  #   enable = true;
+  #   debug = false;
+  #   usePrecompiled = false;
+  #   settings = {
+  #     # Faster cycles for NVMe responsiveness
+  #     cycle = 15;
 
-      # Memory tuning for 16GB RAM
-      memTotal = -5;
-      memFree = 70;
-      memCached = 10;
-      memBuffers = 50;
+  #     # Memory tuning for 16GB RAM
+  #     memTotal = -5;
+  #     memFree = 70;
+  #     memCached = 10;
+  #     memBuffers = 50;
 
-      # Track smaller files (1MB min)
-      minSize = 1000000;
+  #     # Track smaller files (1MB min)
+  #     minSize = 1000000;
 
-      # More parallelism (Ryzen 5600G)
-      processes = 60;
+  #     # More parallelism (Ryzen 5600G)
+  #     processes = 60;
 
-      # No sorting needed for NVMe (no seek penalty)
-      sortStrategy = 0;
+  #     # No sorting needed for NVMe (no seek penalty)
+  #     sortStrategy = 0;
 
-      # Save state every 30 min
-      autoSave = 1800;
+  #     # Save state every 30 min
+  #     autoSave = 1800;
 
-      # NixOS-specific paths (Already implemented on preload-ng flake)
-      mapPrefix = "/nix/store/;/run/current-system/;/home/mingas/.local/share/;!/";
-      exePrefix = "/nix/store/;/run/current-system/;/home/mingas/.local/share/;!/";
+  #     # NixOS-specific paths (Already implemented on preload-ng flake)
+  #     mapPrefix = "/nix/store/;/run/current-system/;/home/mingas/.local/share/;!/";
+  #     exePrefix = "/nix/store/;/run/current-system/;/home/mingas/.local/share/;!/";
 
-      predictionAlgorithm = "VOMM";
-    };
-  };
+  #     predictionAlgorithm = "VOMM";
+  #   };
+  # };
 
   powerManagement.cpuFreqGovernor = "performance";
   services = {

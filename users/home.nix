@@ -17,7 +17,6 @@
   programs.home-manager.enable = true;
 
   imports = [
-    ./vscode.nix
     ./mangohud.nix
     ./mime.nix
     ./nh.nix

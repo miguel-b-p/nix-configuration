@@ -22,8 +22,6 @@
     ./programs/steam.nix
     ./programs/lact.nix
     ./programs/steam-run.nix
-    ./programs/warp-cloudflare.nix
-    ./programs/warp-terminal
     ./programs/packages.nix
     ./programs/file-manager.nix
     ./system/kernel.nix

@@ -17,8 +17,8 @@ in
       chromium
 
       # Development
-      windsurf
       micro
+      vnote
 
       # Files
       file-roller
@@ -35,6 +35,16 @@ in
       qbittorrent
 
       # LLM Agents
-      coderabbit-cli
+
+      # Local AI
+      (pkgs.callPackage ./ollama/package.nix {
+        acceleration = "rocm";
+        rocmGpuTargets = [ "gfx1032" ]; # RX 6600
+        ollama = null;
+        ollama-rocm = null;
+        ollama-cuda = null;
+        ollama-vulkan = null;
+        nixosTests = null;
+      })
     ];
 }

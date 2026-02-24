@@ -20,6 +20,15 @@
     pciutils
     wl-clipboard
     icu
+
+    # Dev and rocm
+    glibc
+    gcc
+    gnumake
+    zstd
+    cmake
+    gccNGPackages_15.libstdcxx
+
   ];
 
   programs.ydotool.enable = true;
