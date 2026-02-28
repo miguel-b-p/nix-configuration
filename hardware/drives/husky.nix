@@ -5,12 +5,13 @@
     fsType = "btrfs";
     options = [
       "defaults"
-      "user"
+      "exec"
       "rw"
       "compress=zstd:3"
       "ssd"
       "noatime"
       "x-gvfs-show"
+      "nofail"
     ];
   };
 }
