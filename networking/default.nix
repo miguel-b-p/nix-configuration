@@ -3,7 +3,7 @@
 {
 
   networking = {
-    hostName = "NixOS";
+    hostName = "nixos";
     networkmanager.enable = true;
   };
   hardware.enableAllFirmware = true;
