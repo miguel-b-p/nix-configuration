@@ -10,6 +10,7 @@
       "compress=zstd:3"
       "ssd"
       "noatime"
+      "x-gvfs-show"
     ];
   };
 }
