@@ -62,10 +62,10 @@ let
       stdenv.cc.libc
       vulkan-loader
       xdg-utils
-      xorg.libX11
-      xorg.libxcb
-      xorg.libXcursor
-      xorg.libXi
+      libX11
+      libxcb
+      libXcursor
+      libXi
     ]
     ++ lib.optionals waylandSupport [ wayland ];
 

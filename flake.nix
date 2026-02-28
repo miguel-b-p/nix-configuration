@@ -3,18 +3,16 @@
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixpkgs-unstable";
     nix-flatpak.url = "github:gmodena/nix-flatpak";
     home-manager = {
-      url = "https://github.com/nix-community/home-manager/archive/master.tar.gz";
+      url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    flox.url = "github:flox/flox/latest";
     antigravity-nix = {
       url = "github:jacopone/antigravity-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    # preload-ng.url = "/home/mingas/projetos/preload-ng";
     llm-agents.url = "github:numtide/llm-agents.nix";
     dms = {
-      url = "github:AvengeMedia/DankMaterialShell";
+      url = "github:AvengeMedia/DankMaterialShell/stable";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     niri.url = "github:sodiboo/niri-flake";
@@ -29,11 +27,9 @@
     {
       self,
       nixpkgs,
-      flox,
       home-manager,
       nix-flatpak,
       antigravity-nix,
-      # preload-ng,
       llm-agents,
       dms,
       niri,
@@ -50,11 +46,9 @@
             ./configuration.nix
             nix-flatpak.nixosModules.nix-flatpak
             nix-gaming-edge.nixosModules.default
-            # preload-ng.nixosModules.default
             maccel.nixosModules.default
             {
               environment.systemPackages = [
-                flox.packages.x86_64-linux.default
                 antigravity-nix.packages.x86_64-linux.default
               ];
             }

@@ -6,7 +6,8 @@
   ];
   environment.systemPackages = with pkgs; [
     ntfs3g
+    btrfs-progs
   ];
-  
+
   services.fstrim.enable = true;
 }

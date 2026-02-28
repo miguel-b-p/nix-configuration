@@ -20,5 +20,6 @@
       enable = true;
       restartIfChanged = true;
     };
+    enableCalendarEvents = false;
   };
 }

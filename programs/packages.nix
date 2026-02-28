@@ -37,14 +37,6 @@ in
       # LLM Agents
 
       # Local AI
-      (pkgs.callPackage ./ollama/package.nix {
-        acceleration = "rocm";
-        rocmGpuTargets = [ "gfx1032" ]; # RX 6600
-        ollama = null;
-        ollama-rocm = null;
-        ollama-cuda = null;
-        ollama-vulkan = null;
-        nixosTests = null;
-      })
+      ollama-rocm
     ];
 }
