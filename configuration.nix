@@ -24,6 +24,7 @@
     ./programs/steam-run.nix
     ./programs/packages.nix
     ./programs/file-manager.nix
+    ./programs/droidcam.nix
     ./system/kernel.nix
     ./system/packages.nix
     ./system/fonts.nix
