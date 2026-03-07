@@ -7,18 +7,18 @@
 
 {
   nixpkgs.overlays = [
-    inputs.nix-gaming-edge.overlays.default
-    #nix-gaming-edge.overlays.mesa-git
-    #nix-gaming-edge.overlays.proton-cachyos
+    # inputs.nix-gaming-edge.overlays.default
+    inputs.nix-gaming-edge.overlays.mesa-git
+    inputs.nix-gaming-edge.overlays.proton-cachyos
     #nix-gaming-edge.overlays.vintagestory
     #etc.
   ];
   environment.systemPackages = with pkgs; [
     pciutils
     radeontop
-    rocmPackages.rocm-cmake
-    rocmPackages.hipcc
-    rocmPackages.rocm-smi
+    # rocmPackages.rocm-cmake
+    # rocmPackages.hipcc
+    # rocmPackages.rocm-smi
   ];
 
   environment.sessionVariables = {
@@ -27,10 +27,10 @@
     RADV_PERFTEST = "nggc";
     # RADV_FORCE_VRS = "2x2";
 
-    ROCM_PATH = "/opt/rocm";
-    HIP_PATH = "/opt/rocm";
-    HIP_CLANG_PATH = "/opt/rocm/llvm/bin";
-    HSA_OVERRIDE_GFX_VERSION = "10.3.0";
+    # ROCM_PATH = "/opt/rocm";
+    # HIP_PATH = "/opt/rocm";
+    # HIP_CLANG_PATH = "/opt/rocm/llvm/bin";
+    # HSA_OVERRIDE_GFX_VERSION = "10.3.0";
   };
 
   boot.kernelParams = [
@@ -99,23 +99,25 @@
     firmware = [ pkgs.linux-firmware ];
   };
 
-  systemd.tmpfiles.rules =
-    let
-      rocmEnv = pkgs.symlinkJoin {
-        name = "rocm-combined";
-        paths = with pkgs.rocmPackages; [
-          rocblas
-          hipblas
-          clr
-          rocm-runtime
-          rocm-device-libs
-          rocminfo
-          rocm-smi
-          llvm.llvm
-        ];
-      };
-    in
-    [
-      "L+ /opt/rocm - - - - ${rocmEnv}"
-    ];
+  /*
+    systemd.tmpfiles.rules =
+      let
+        rocmEnv = pkgs.symlinkJoin {
+          name = "rocm-combined";
+          paths = with pkgs.rocmPackages; [
+            rocblas
+            hipblas
+            clr
+            rocm-runtime
+            rocm-device-libs
+            rocminfo
+            rocm-smi
+            llvm.llvm
+          ];
+        };
+      in
+      [
+        "L+ /opt/rocm - - - - ${rocmEnv}"
+      ];
+  */
 }

@@ -16,8 +16,8 @@
     extraCompatPackages = with pkgs; [
       proton-cachyos
       proton-cachyos-x86_64-v2
-      # proton-cachyos-x86_64-v3
-      # proton-cachyos-x86_64-v4
+      proton-cachyos-x86_64-v3
+      proton-cachyos-x86_64-v4
     ];
   };
 

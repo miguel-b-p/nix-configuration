@@ -20,15 +20,8 @@
     pciutils
     wl-clipboard
     icu
-
-    # Dev and rocm
-    glibc
-    gcc
-    gnumake
-    zstd
-    cmake
-    gccNGPackages_15.libstdcxx
-
+    smartmontools
+    nvme-cli
   ];
 
   programs.ydotool.enable = true;

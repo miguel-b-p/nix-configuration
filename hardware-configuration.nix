@@ -25,15 +25,19 @@
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-amd" ];
   boot.extraModulePackages = [ ];
+  boot.kernelParams = [ "nvme_core.default_ps_max_latency_us=0" ];
 
   fileSystems."/" = {
     device = "/dev/disk/by-uuid/7282b8e5-bf38-4746-b78f-c0c8ddc19e02";
     fsType = "btrfs";
     options = [
       "subvol=@"
-      "compress=zstd:4"
       "ssd"
+      "compress=zstd:4"
       "noatime"
+      "discard=async"
+      "space_cache=v2"
+      "commit=120"
     ];
   };
 
@@ -42,9 +46,12 @@
     fsType = "btrfs";
     options = [
       "subvol=@home"
-      "compress=zstd:4"
       "ssd"
+      "compress=zstd:4"
       "noatime"
+      "discard=async"
+      "space_cache=v2"
+      "commit=60"
     ];
   };
 
@@ -60,6 +67,18 @@
   swapDevices = [
     { device = "/dev/disk/by-uuid/2c6e56bc-411e-4eed-9183-65ea65bcd1f2"; }
   ];
+
+  services.btrfs.autoScrub = {
+    enable = true;
+    interval = "monthly";
+    fileSystems = [ "/" ];
+  };
+
+  services.fstrim.enable = true;
+
+  services.smartd = {
+    enable = true;
+  };
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
