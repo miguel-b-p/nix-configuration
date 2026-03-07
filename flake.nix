@@ -1,6 +1,7 @@
 {
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixpkgs-unstable";
+    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-25.11";
     nix-flatpak.url = "github:gmodena/nix-flatpak";
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -27,6 +28,7 @@
     {
       self,
       nixpkgs,
+      nixpkgs-stable,
       home-manager,
       nix-flatpak,
       antigravity-nix,

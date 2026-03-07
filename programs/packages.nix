@@ -1,6 +1,7 @@
 { pkgs, inputs, ... }:
 let
   llm-agents-pkgs = inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system};
+  pkgs-stable = inputs.nixpkgs-stable.legacyPackages.${pkgs.stdenv.hostPlatform.system};
 in
 {
   environment.systemPackages =
@@ -34,9 +35,6 @@ in
       motrix
       qbittorrent
 
-      # LLM Agents
-
-      # Local AI
-      ollama-rocm
+      pkgs-stable.ollama-rocm
     ];
 }
